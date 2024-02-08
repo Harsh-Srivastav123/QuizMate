@@ -1,0 +1,115 @@
+
+@keyframes moveUpDown {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10%);
+    }
+  }
+@keyframes slideInFromLeft {
+    from {
+      transform: translateX(-100%);
+    }
+    to {
+      transform: translateX(0%);
+    }
+  }
+
+.practicecorner{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    font-family: 'GothamSSm';
+    margin: 40px;
+    //ani
+    position: relative;
+    
+    span{
+        font-size:70px;
+        font-family:Georgia, 'Times New Roman', Times, serif;
+    }
+    .show{
+        left: 0;
+        animation: slideInFromLeft 1s forwards;
+    }
+    .card:hover{
+        width: 75%;
+        background-color:#79c2d0 ;
+        box-shadow: 0px 10px 80px 33px rgba(0,0,0,0.1);
+    }
+    .card{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #eaf6f6;//
+        margin: 20px;
+        width: 70%;
+        //ani
+        //left: 0;
+        //animation: slideInFromLeft 1s forwards;
+        .left{
+            flex: 1;
+            margin: 10px;
+            position: relative;
+            //background-color: white;//
+            
+            img{
+                width: 400px;
+                height: 500px;
+                margin: 50px;
+                animation: moveUpDown 2s linear 1s infinite alternate none;
+                
+            }
+            
+
+        }
+        .right{
+            flex: 1;
+            //background-color: white;//
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin:10px;
+            .top{
+                .in{
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin: 10px;
+                    img{
+                        border-radius: 50%;
+                        border: 1px solid black;
+                        width:80px;
+                        margin-right: 20px;
+                    }
+                    span{
+                        font-size: 50px;
+                        font-family: Georgia, 'Times New Roman', Times, serif;
+                        
+                    }
+                }
+                p{
+                    font-size: 30px;
+                    font-family:Georgia, 'Times New Roman', Times, serif;
+                }
+            }
+            button{
+                background-color: #455d7a;
+                color: white;
+                width: 200px;
+                height: 40px;
+                border-radius: 5%;
+                cursor: pointer;
+                font-size: large;
+            }
+            button:hover{
+                width: 220px;
+                height:50px ;
+                font-size: larger;
+            }
+        }
+    }
+}
