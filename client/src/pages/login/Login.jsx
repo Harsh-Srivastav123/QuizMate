@@ -1,25 +1,54 @@
+import { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../../context/authContext.jsx";
+import axios from "axios";
 
-import Loginone from "../../components/loginComponents/Loginone"
-import Header from "./../../components/loginComponents/Header"
 
 
-export default function LoginPage(){
+
+const LoginPage=()=>{
+    
+    const [inputs,setInputs] = useState({
+        userName:"",
+        email:"",
+        password:""
+    });
+    const [err,setErr] = useState(null);
+    const {login} =useContext(AuthContext);
+
+    const navigate = useNavigate()
+
+    const handleChange =  (e) =>{
+        setInputs(prev=>({...prev,[e.target.name]:e.target.value}))
+    };
+    
+
+    const handleLogin = async (e)=>{
+        e.preventDefault()
+        console.log(inputs)
+        try{
+            await login(inputs);
+            //navigate("/")
+            console.log("done")
+        }catch(err){
+            setErr(err);
+            console.log(err);
+        }
+    }
     return(
-        <>
-        <div className="min-h-full bg-white h-screen flex items-center justify-center  py-12 px-2 sm:px-8 lg:px-10">
-    <div className="max-w-md w-full space-y-8 border-2 px-[40px] py-10">
-             <Header
-                heading="Login to your account"
-                paragraph="Don't have an account yet? "
-                linkName="Signup"
-                linkUrl="/signup"
-                />
-                <Loginone/>
-                </div>
-                </div>
+        
+        <div className="flex flex-row">
+            <img src="" alt="" />
+            <input type="text" placeholder="username" name="userName" onChange={handleChange}/>
+            <input type="email"  placeholder="email" name="email" onChange={handleChange}/>
+            <input type="password" placeholder="password" name="password" onChange={handleChange}/>
+            <button onClick={handleLogin}>login</button>
+            {err && err}
+        </div>
                 
                 
             
-        </>
+        
     )
 }
+export default LoginPage;
