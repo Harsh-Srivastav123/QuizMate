@@ -1,4 +1,4 @@
-import { createContext, useEffect,useState } from "react";
+import { createContext, useContext, useEffect,useState } from "react";
 import axios from "axios";
 import {baseUrl} from "./../baseUrl.jsx"
 export const AuthContext = createContext();
@@ -6,11 +6,9 @@ export const AuthContext = createContext();
 
 export const AuthContextProvider =({children})=>{
     
-    const [currentUser,setCurrentUser]= useState(
-        JSON.parse(localStorage.getItem("user"))||null
-    );
+    
     //to store userCredential
-    const [userName,setUserName]=useState("");
+    const [userName,setUserName]=useState('');
     const [email,setEmail]=useState("");
     const [password,setPassword]=useState("");
     const [uId,setId]=useState("");
@@ -42,9 +40,12 @@ export const AuthContextProvider =({children})=>{
         };
         axios.request(config)
         .then((response) => {
-            console.log(response.data)
-            setAccessToken(response.data.token)
-            console.log(accessToken);
+            setUserName(response.data.userName);
+            setEmail(inputs.email);
+            setPassword(inputs.password);
+            setId(response.data.userId);
+            setAccessToken(response.data.token);
+            
 
         })
         .catch((error) => {
@@ -55,19 +56,43 @@ export const AuthContextProvider =({children})=>{
         
     };
     
-    useEffect(()=>{
-        localStorage.setItem("user",JSON.stringify(currentUser));
-    },[currentUser]
-    );
+    
+    useEffect(() => {
+        //console.log("Updated userName:", accessToken);
+      }, [userName,email,password,uId,accessToken]);
+      
+
+      let value = {
+        login,
+        message,
+        setMessage,
+        accessToken,
+        setAccessToken,
+        userName,
+        email,
+        setEmail,
+        password,
+        setPassword,
+        uId,
+        setId,
+      };/*
     let value={
         login,
         message,
         setMessage,
         accessToken,
         setAccessToken,
+        userName,
+        setCurrentUser,
+        email,
+        setEmail,
+        password,
+        setPassword,
+        uId,
+        setId
         
-    }
-    
+    }*/
+    console.log(userName)
     return (
         <AuthContext.Provider value={value}>
             {children}

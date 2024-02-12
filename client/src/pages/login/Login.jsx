@@ -28,7 +28,7 @@ const LoginPage=()=>{
         console.log(inputs)
         try{
             await login(inputs);
-            //navigate("/")
+            navigate("/")
             console.log("done")
         }catch(err){
             setErr(err);
