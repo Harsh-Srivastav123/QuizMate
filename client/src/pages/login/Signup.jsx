@@ -3,6 +3,9 @@ import axios from "axios";
 import FormData from "form-data"
 import fs from "fs"
 import Image from "./../../../public/user.jpeg"
+import { useContext } from 'react';
+import { AuthContext } from '../../context/authContext';
+import {baseUrl} from "./../../baseUrl.jsx"
 
 const Signup = () => {
     const [inputs,setInputs] = useState({
@@ -10,12 +13,14 @@ const Signup = () => {
         email:"",
         password:"",
     });
-    const [err,setErr] = useState(null);
-    const[registered,setRegistered]=useState(false);
+    const{message,setMessage}=useContext(AuthContext);
+    const [registered,setRegistered]=useState(false);
+
 
     const handleChange = (e) =>{
         setInputs(prev=>({...prev,[e.target.name]:e.target.value}))   
     };
+
     const handleClick= async e=>{
         e.preventDefault();
         console.log(inputs)
@@ -30,17 +35,22 @@ const Signup = () => {
             let config = {
                 method: 'post',
                 maxBodyLength: Infinity,
-                url: 'http://52.66.242.197:8080/user/createUser',
+                url: `${baseUrl}/user/createUser`,
                 headers: { 
                     
                 },
                 data : data
             };
 
-            axios.request(config)
+            axios.request
+            (config)
             .then((response) => {
                 console.log(JSON.stringify(response.data));
-                })
+                setMessage(JSON.stringify(response.data.message))
+                console.log(message)
+                setRegistered(true);
+
+            })
             .catch((error) => {
                 console.log(error);
                 setErr(error);
@@ -49,10 +59,7 @@ const Signup = () => {
 
         }
         catch(err){
-           //console.log({err})
-           //setErr(err.response.data);
            console.log(err)
-
         }
         
             
@@ -67,7 +74,11 @@ const Signup = () => {
       <input type="email" placeholder='email' name='email' onChange={handleChange}/>
       <input type="password" placeholder='password' name='password' onChange={handleChange}/>
       <button onClick={handleClick}>Register</button>
-      {registered?"Please verify your mail to get registered" :""}
+      <br />
+      {message}
+      <br />
+      {registered && (<button>Login</button>)}
+      
     </div>
   )
 
