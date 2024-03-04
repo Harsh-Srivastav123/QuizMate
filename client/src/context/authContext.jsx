@@ -23,9 +23,9 @@ export const AuthContextProvider =({children})=>{
         //console.log(inputs)
         
         let data = JSON.stringify({
-            "userName": "Harsh-Raj-Srivastav-prod",//`${inputs.userName}`,
-            "email": "srivastavharsh2003@gmail.com",//`${inputs.email}`,
-            "password":"123456789"//`${inputs.password}`
+            "userName": `${inputs.userName}`,
+            "email": `${inputs.email}`,
+            "password":`${inputs.password}`
         });
         let config = {
             method: 'post',
@@ -75,24 +75,9 @@ export const AuthContextProvider =({children})=>{
         setPassword,
         uId,
         setId,
-      };/*
-    let value={
-        login,
-        message,
-        setMessage,
-        accessToken,
-        setAccessToken,
-        userName,
-        setCurrentUser,
-        email,
-        setEmail,
-        password,
-        setPassword,
-        uId,
-        setId
-        
-    }*/
-    console.log(userName)
+      };
+    
+    //console.log(userName)
     return (
         <AuthContext.Provider value={value}>
             {children}

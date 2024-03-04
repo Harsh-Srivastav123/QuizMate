@@ -5,6 +5,7 @@ import Signup from './pages/login/Signup';
 import LoginPage from './pages/login/Login';
 import { useContext } from 'react';
 import { AuthContext } from './context/authContext.jsx';
+import QuestionParam from './pages/questionParam/QuestionParam.jsx';
 
 function App() {
  
@@ -16,7 +17,7 @@ function App() {
         <Route path="/" element={<Home/>}/>
         <Route path="/signup" element={<Signup/>}/>
         <Route path="/login" element={<LoginPage/>}/>
-        
+        <Route path="/questionParam"  element={<QuestionParam/>}/>
       </Routes>
     </div>
   )

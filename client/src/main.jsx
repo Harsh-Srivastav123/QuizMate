@@ -6,12 +6,16 @@ import './index.css'
 import {BrowserRouter} from "react-router-dom"
 import { AuthContextProvider } from './context/authContext.jsx'
 import { AuthContext } from './context/authContext.jsx'
+import { CustomContext } from './context/customQuizContext.jsx'
+import { CustomContextProvider } from './context/customQuizContext.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   //<React.StrictMode>
     <BrowserRouter>
       <AuthContextProvider>  
-        <App/>
+        <CustomContextProvider>
+          <App/>
+        </CustomContextProvider>
       </AuthContextProvider>
     </BrowserRouter>
   //</React.StrictMode>,
