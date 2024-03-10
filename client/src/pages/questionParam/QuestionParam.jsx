@@ -8,36 +8,82 @@ const QuestionParam = () => {
   const [categories, setCategories] = useState([]);
   const [formData, setFormData] = useState({ category: "all", number: 0, difficulty: "all" });
   const [totalques, setTotalques] = useState(0);
-  const { setQuestionInfo } = useContext(CustomContext);
+  const { questionInfo , setQuestionInfo , totalQ,setTotalQ } = useContext(CustomContext);
   const navigate = useNavigate();
+
+  let categorylist=[];
+  let ques={};
+
+  function updateTotalQuestion() {
+    
+    for (let i = 0; i < categorylist.length; i++) {
+        
+        if (categorylist[i].category == formData.category) {
+            
+            switch (formData.difficulty) {
+                case 'easy':
+                    setTotalques(categorylist[i].easyQuestion);
+                    break;
+                case 'medium':
+                    setTotalques(categorylist[i].mediumQuestion);
+                    break;
+                case 'hard':
+                    setTotalques(categorylist[i].hardQuestion);
+                    break;
+                case 'all':
+                    setTotalques(categorylist[i].totalQuestion);
+                    break;
+                default:
+                    console.log('Invalid difficulty level');
+                    return;
+            }
+            
+            return;
+        }
+    }
+    if(formData.category=='all')
+    {
+        setTotalques(0);
+        let que=0;
+        for (let i=0;i< categorylist.length; i++)
+        { 
+          switch(formData.difficulty){
+            case 'easy':
+              que=que+categorylist[i].easyQuestion;
+              break;
+            case 'medium':
+              que=que+categorylist[i].mediumQuestion;
+              break;
+            case 'hard':
+              que=que+categorylist[i].hardQuestion;
+              break;
+            case 'all':
+              que=que+categorylist[i].totalQuestion;
+              break;
+            default:
+              console.log('Invalid difficulty level');
+              return;
+          }
+        }
+        setTotalques(que);
+    }
+  }
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get(`${baseUrl}/question/category/all`);
+        console.log(response.data);
         const categoryData = response.data.map(item => item.category);
         setCategories(categoryData);
-        // Set categories and total questions once
-        const categorylist = response.data;
-        const totalQuestions = categorylist.reduce((total, category) => {
-          switch (formData.difficulty) {
-            case 'easy':
-              return total + category.easyQuestion;
-            case 'medium':
-              return total + category.mediumQuestion;
-            case 'hard':
-              return total + category.hardQuestion;
-            default:
-              return total + category.totalQuestion;
-          }
-        }, 0);
-        setTotalques(totalQuestions);
+        categorylist = response.data;
+        updateTotalQuestion();
       } catch (error) {
         console.log(error);
       }
     };
     fetchData();
-  }, [formData.difficulty]);
+  }, [formData.difficulty,formData.category]);
 
   function changeHandler(event) {
     const { name, value } = event.target;
@@ -45,6 +91,8 @@ const QuestionParam = () => {
       ...prevFormData,
       [name]: value
     }));
+    //console.log(formData);
+    updateTotalQuestion();
   }
 
   function submitHandler(event) {
@@ -54,7 +102,10 @@ const QuestionParam = () => {
       .then((response) => {
         const ques = response.data;
         setQuestionInfo(ques.questionList);
-        navigate("/quiz");
+        console.log(questionInfo);
+        setTotalQ(ques.totalQuestion);
+        console.log(totalQ);
+        //navigate("/quiz");
       })
       .catch((error) => {
         console.log(error);
@@ -85,7 +136,7 @@ const QuestionParam = () => {
 
       <label htmlFor="number">Number of Questions</label>
       <div>
-        <input name="number" id='number' type="number" onChange={changeHandler} value={formData.number} />
+        <input name="number" id='number' type="number"  onChange={changeHandler} value={formData.number} />
         / {totalques}
       </div>
 
