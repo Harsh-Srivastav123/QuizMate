@@ -6,21 +6,55 @@ export const AuthContext = createContext();
 
 export const AuthContextProvider =({children})=>{
     
-    
-    //to store userCredential
-    const [userName,setUserName]=useState('');
-    const [email,setEmail]=useState("");
-    const [password,setPassword]=useState("");
     const [uId,setId]=useState("");
+    const [userCredential,setUserCredential]=useState({userName:"", email:"", password:""});
     //to display message
-    
     const [message,setMessage]=useState("");
-
     const [accessToken,setAccessToken]=useState("");
+    let access="";
+    
+    const refreshToken =()=>{
+        const {userName,email,password}=userCredential;
+        let data=JSON.stringify({
+            "userName": `${userName}`,
+            "email": `${email}`,
+            "password":`${password}`
+        });
+        let config = {
+            method: 'post',
+            maxBodyLength: Infinity,
+            url: baseUrl+'/user/auth',
+            headers: { 
+                "Access-Control-Allow-Origin": "*",
+                'Content-Type': 'application/json', 
+                'X-API-Key': '{{token}}'
+            },
+            data : data
+        };
+        /*
+        axios.request(config)
+        .then((response) => {
+            
+            access=response.data.token;
+            setAccessToken(access);
+            console.log("New AccessToken is");
+            console.log(accessToken);
+        })
+        .catch((error) => {
+            console.log(error);
+        });*/
 
+        try {
+            const response = axios.request(config);
+            const newToken = response.data.token;
+            setAccessToken(newToken);
+            console.log("New AccessToken is:", newToken);
+        } catch (error) {
+            console.log(error);
+        }
+        
+    }
     const login =async(inputs) => {
-        //login
-        //console.log(inputs)
         
         let data = JSON.stringify({
             "userName": `${inputs.userName}`,
@@ -40,12 +74,16 @@ export const AuthContextProvider =({children})=>{
         };
         axios.request(config)
         .then((response) => {
-            setUserName(response.data.userName);
-            setEmail(inputs.email);
-            setPassword(inputs.password);
-            setId(response.data.userId);
-            setAccessToken(response.data.token);
+            const { userName, userId, token } = response.data;
             
+            setId(response.data.userId);
+            access=response.data.token;
+            setAccessToken(token);
+            setUserCredential({
+                userName: `${response.data.userName}`,
+                email: `${inputs.email}`,
+                password: `${inputs.password}`
+            });
 
         })
         .catch((error) => {
@@ -58,24 +96,24 @@ export const AuthContextProvider =({children})=>{
     
     
     useEffect(() => {
-        //console.log("Updated userName:", accessToken);
-      }, [userName,email,password,uId,accessToken]);
-      
+        
+        console.log(userCredential);
+        console.log(accessToken);
+    }, [accessToken,userCredential]);
+    
 
-      let value = {
+    let value = {
         login,
         message,
         setMessage,
         accessToken,
         setAccessToken,
-        userName,
-        email,
-        setEmail,
-        password,
-        setPassword,
         uId,
         setId,
-      };
+        refreshToken,
+        userCredential,
+        setUserCredential
+    };
     
     //console.log(userName)
     return (

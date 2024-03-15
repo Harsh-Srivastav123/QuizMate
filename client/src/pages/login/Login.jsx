@@ -25,11 +25,10 @@ const LoginPage=()=>{
 
     const handleLogin = async (e)=>{
         e.preventDefault()
-        console.log(inputs)
+        //console.log(inputs)
         try{
             await login(inputs);
-            navigate("/")
-            console.log("done")
+            navigate("/questionParam");
         }catch(err){
             setErr(err);
             console.log(err);

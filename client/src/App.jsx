@@ -7,6 +7,7 @@ import { useContext } from 'react';
 import { AuthContext } from './context/authContext.jsx';
 import QuestionParam from './pages/questionParam/QuestionParam.jsx';
 import Quiz from './pages/quizPage/Quiz.jsx';
+import QuizResult from './pages/quizResult/QuizResult.jsx';
 
 function App() {
  
@@ -20,6 +21,7 @@ function App() {
         <Route path="/login" element={<LoginPage/>}/>
         <Route path="/questionParam"  element={<QuestionParam/>}/>
         <Route path="/quiz" element={<Quiz/>}/>
+        <Route path="/quizResult" element={<QuizResult/>}/>
       </Routes>
     </div>
   )

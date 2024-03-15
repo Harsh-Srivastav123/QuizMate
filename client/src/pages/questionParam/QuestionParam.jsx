@@ -3,17 +3,20 @@ import axios from "axios";
 import { baseUrl } from "../../baseUrl.jsx";
 import { CustomContext } from '../../context/customQuizContext.jsx';
 import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../context/authContext.jsx';
 
 const QuestionParam = () => {
   const [categories, setCategories] = useState([]);
   const [formData, setFormData] = useState({ category: "all", number: 0, difficulty: "all" });
   const [totalques, setTotalques] = useState(0);
-  const { questionInfo , setQuestionInfo , totalQ,setTotalQ } = useContext(CustomContext);
+  const { questionInfo , setQuestionInfo , totalQ,setTotalQ,chosenCategory,setChosenCategory ,totalMarks,setTotalMarks} = useContext(CustomContext);
   const navigate = useNavigate();
+  const {accessToken,userCredential}=useContext(AuthContext);
 
   let categorylist=[];
   let ques={};
-
+  console.log(accessToken);
+  console.log(userCredential);
   function updateTotalQuestion() {
     
     for (let i = 0; i < categorylist.length; i++) {
@@ -103,14 +106,23 @@ const QuestionParam = () => {
         const ques = response.data;
         setQuestionInfo(ques.questionList);
         console.log(questionInfo);
+        setChosenCategory(formData.category);
         setTotalQ(ques.totalQuestion);
         console.log(totalQ);
-        //navigate("/quiz");
+        let maxMarks = 0;
+        ques.questionList.forEach(question => {
+            maxMarks += parseInt(question.marks);
+        });
+        setTotalMarks(maxMarks);
+        navigate("/quiz");
       })
       .catch((error) => {
         console.log(error);
       });
   }
+  useEffect(()=>{
+    console.log(totalMarks);
+  },[totalMarks])
 
   return (
     <div>
