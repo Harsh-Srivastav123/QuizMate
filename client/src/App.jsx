@@ -8,10 +8,12 @@ import { AuthContext } from './context/authContext.jsx';
 import QuestionParam from './pages/questionParam/QuestionParam.jsx';
 import Quiz from './pages/quizPage/Quiz.jsx';
 import QuizResult from './pages/quizResult/QuizResult.jsx';
+import QuestionPaper from './pages/questionPaper/QuestionPaper.jsx';
+import CustomQuiz from './pages/customQuiz/CustomQuiz.jsx';
 
 function App() {
  
-  const {currentUser} =useContext(AuthContext)
+  
 
   return (
     <div className='App'>
@@ -22,6 +24,8 @@ function App() {
         <Route path="/questionParam"  element={<QuestionParam/>}/>
         <Route path="/quiz" element={<Quiz/>}/>
         <Route path="/quizResult" element={<QuizResult/>}/>
+        <Route path="/questionPaper" element={<QuestionPaper/>}/>
+        <Route path="/customQuiz" element={<CustomQuiz/>}/>
       </Routes>
     </div>
   )
