@@ -1,18 +1,24 @@
 import React from 'react'
-import Logo from "../../../assets/quizlogo.jpeg"
-import "./navbar.scss"
+
+
 import { Link } from 'react-router-dom'
 
 const Navbar = () => {
   return (
     <>
-    <div className='h-[7rem] bg-[#022140] flex'>
-      <div className='min-h-12 w-[7rem] text-5xl px-8 py-6 text-[#EDEAE5]'>Quizmate</div>
-      <div className='pl-[40rem] py-9 text-2xl text-[#EDEAE5]'>Create</div>
-      <div className='pl-[5rem] py-9 text-2xl text-[#EDEAE5]'>About Us</div>
-      <div className='pl-[5rem] py-9'>
-      <button className=" px-3 py-3 btn btn-outline rounded-full bg-">Enter Code</button>
+    <div className='h-[7rem] bg-[#2A1B3D] flex'>
+      <div className='min-h-12 w-[7rem] text-5xl px-[4rem] font-ghi py-7 text-[#EDEAE5]'>Quizmate</div>
+      
+      <div className='pl-[60rem] py-10 text-2xl font-abc cursor-default text-[#EDEAE5]'>Blog</div>
+      <div className='pl-[5rem] py-10 text-2xl font-abc cursor-default text-[#EDEAE5]'>About Us</div>
+      <div className='pl-[5rem] py-8 '>
+      <div className="avatar">
+  <div className="w-12 rounded-full ring  ring-primary ring-offset-base-100 ring-offset-2">
+    <img src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+  </div>
+</div>
       </div>
+     
     </div>
     </>
   )

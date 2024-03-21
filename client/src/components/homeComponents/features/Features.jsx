@@ -1,20 +1,20 @@
 import React from 'react'
-import "./features.scss"
+
 import Lang from "./../../../assets/codee.png"
 import ques from "./../../../assets/ques.png"
 import Time from "./../../../assets/time.png"
 import Diff from "./../../../assets/diff.png"
 import Rev from "./../../../assets/rev.png"
-import Path from "./../../../assets/path.jpeg"
+
 import lead from "./../../../assets/lead.jpeg"
 
 const Features = () => {
   return (
-    <div className='features'>
-      <span>Features</span>
-      <div className="fea">
+    <div >
+     
+      <div className=" flex flex-row">
 
-        <div className="f">
+        <div className="f  ">
             <img src={Lang} alt="" />
             <span>Coding Language Selection</span>
             <p>Users choose programming language preferences for coding-related quizzes.</p>
