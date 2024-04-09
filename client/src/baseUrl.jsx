@@ -1,1 +1,1 @@
-export const baseUrl="http://65.2.175.178:8080";
+export const baseUrl="http://43.205.68.79:8080";

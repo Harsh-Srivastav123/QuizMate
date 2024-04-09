@@ -10,6 +10,7 @@ import Quiz from './pages/quizPage/Quiz.jsx';
 import QuizResult from './pages/quizResult/QuizResult.jsx';
 import QuestionPaper from './pages/questionPaper/QuestionPaper.jsx';
 import CustomQuiz from './pages/customQuiz/CustomQuiz.jsx';
+import Conductsession from './pages/conductSession/Conductsession.jsx';
 
 function App() {
  
@@ -25,7 +26,8 @@ function App() {
         <Route path="/quiz" element={<Quiz/>}/>
         <Route path="/quizResult" element={<QuizResult/>}/>
         <Route path="/questionPaper" element={<QuestionPaper/>}/>
-        <Route path="/customQuiz" element={<CustomQuiz/>}/>
+        <Route path="/customquiz" element={<CustomQuiz/>}/>
+        <Route path="/conductSession" element={<Conductsession/>}/>
       </Routes>
     </div>
   )

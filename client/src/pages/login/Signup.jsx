@@ -6,6 +6,7 @@ import Image from "./../../../public/user.jpeg"
 import { useContext } from 'react';
 import { AuthContext } from '../../context/authContext';
 import {baseUrl} from "./../../baseUrl.jsx"
+import { Link } from 'react-router-dom';
 
 const Signup = () => {
     const [inputs,setInputs] = useState({
@@ -36,6 +37,7 @@ const Signup = () => {
                 method: 'post',
                 maxBodyLength: Infinity,
                 url: `${baseUrl}/user/createUser`,
+                
                 headers: { 
                     
                 },
@@ -53,7 +55,7 @@ const Signup = () => {
             })
             .catch((error) => {
                 console.log(error);
-                setErr(error);
+                // setErr(error);
             });
             setRegistered(true);
 
@@ -82,6 +84,8 @@ const Signup = () => {
       <br />
       {registered && (<button>Login</button>)}
       
+
+      <Link to="/login"><div>Already have an account?Login</div></Link>
     </div>
     </div>
   )

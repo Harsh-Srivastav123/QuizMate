@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 
 
 import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 
 const Banner = () => {
@@ -45,12 +46,7 @@ const Banner = () => {
     <div className='pt-[1rem] leading-normal text-center text-white font-abc text-3xl '>Take quizzes or craft your own custom challenges!</div>
       <div className='pl-[42rem] pt-[2rem] '>
         
-        <a href="#_" class="relative inline-flex items-center justify-center px-6 py-4 text-lg font-medium tracking-tighter text-white bg-[#44318D] rounded-full group">
-          <span class="absolute inset-0 w-full h-full mt-1 ml-1 transition-all duration-300 ease-in-out bg-[#44318D] rounded-full group-hover:mt-0 group-hover:ml-0"></span>
-          <span class="absolute inset-0 w-full h-full bg-white rounded-full "></span>
-          <span class="absolute inset-0 w-full h-full transition-all duration-200 ease-in-out delay-100 bg-[#44318D] rounded-full opacity-0 group-hover:opacity-100 "></span>
-          <span class="relative text-[#44318D] text-2xl transition-colors duration-200 ease-in-out delay-100 group-hover:text-white">Signup Now!</span>
-        </a>      
+       <Link to="/signup"> <button className=" p-10 h-10 m-7 text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Signup</button> </Link>    
       </div>
     </div>
   )
