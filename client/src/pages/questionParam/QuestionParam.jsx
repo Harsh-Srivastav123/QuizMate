@@ -100,9 +100,10 @@ const QuestionParam = () => {
 
   function submitHandler(event) {
     event.preventDefault();
-    const quesUrl = `${baseUrl}/question?pageNo=0&pageSize=${formData.number}&category=${formData.category}&difficulty=${formData.difficulty}`;
+    const quesUrl =`${baseUrl}/question?pageNo=0&pageSize=${formData.number}&category=${formData.category}&difficulty=${formData.difficulty}`;
     axios.get(quesUrl)
       .then((response) => {
+        console.log(response.data);
         const ques = response.data;
         setQuestionInfo(ques.questionList);
         console.log(questionInfo);

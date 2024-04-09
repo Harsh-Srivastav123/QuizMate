@@ -28,7 +28,7 @@ const LoginPage=()=>{
         //console.log(inputs)
         try{
             await login(inputs);
-            navigate("/customQuiz");
+            navigate("/questionParam");
         }catch(err){
             setErr(err);
             console.log(err);
