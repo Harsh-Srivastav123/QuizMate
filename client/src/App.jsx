@@ -11,6 +11,11 @@ import QuizResult from './pages/quizResult/QuizResult.jsx';
 import QuestionPaper from './pages/questionPaper/QuestionPaper.jsx';
 import CustomQuiz from './pages/customQuiz/CustomQuiz.jsx';
 import Conductsession from './pages/conductSession/Conductsession.jsx';
+import Addques from './pages/conductSession/Addques.jsx';
+import Joinsession from './pages/joinSession/Joinsession.jsx';
+import Aboutus from './pages/aboutUs/Aboutus.jsx';
+import Sessionquiz from './pages/joinSession/Sessionquiz.jsx';
+import Created from './pages/conductSession/Created.jsx';
 
 function App() {
  
@@ -28,6 +33,12 @@ function App() {
         <Route path="/questionPaper" element={<QuestionPaper/>}/>
         <Route path="/customquiz" element={<CustomQuiz/>}/>
         <Route path="/conductSession" element={<Conductsession/>}/>
+        <Route path="/addQues" element={<Addques/>}/>
+        <Route path ="/joinSession" element={<Joinsession/>}/>
+        <Route path="/aboutUs" element={<Aboutus/>}/>
+        <Route path="/sessionQuiz" element={<Sessionquiz/>}/>
+        <Route path="/created" element={<Created/>}/>
+        
       </Routes>
     </div>
   )

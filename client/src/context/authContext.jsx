@@ -11,6 +11,7 @@ export const AuthContextProvider =({children})=>{
     //to display message
     const [message,setMessage]=useState("");
     const [accessToken,setAccessToken]=useState("");
+    //const [sessionId,setSessionId]=useState(0);
     let access="";
     
     const refreshToken =()=>{
@@ -112,7 +113,9 @@ export const AuthContextProvider =({children})=>{
         setId,
         refreshToken,
         userCredential,
-        setUserCredential
+        setUserCredential,
+        //sessionId,
+        //setSessionId
     };
     
     //console.log(userName)
