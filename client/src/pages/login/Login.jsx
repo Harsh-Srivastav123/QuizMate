@@ -28,6 +28,7 @@ const LoginPage=()=>{
         //console.log(inputs)
         try{
             await login(inputs);
+         main
             navigate("/");
         }catch(err){
             setErr(err);
