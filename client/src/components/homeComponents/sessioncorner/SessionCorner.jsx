@@ -7,7 +7,7 @@ import Join from '../../../animations/Join.json'
 const SessionCorner = () => {
   return (
     <>
-    <div className='text-[#795df1] bg-[#2A1B3D] pt-[7rem] text-center font-abc  text-8xl animate-fade-down animate-once animate-duration-1000 animate-delay-1000'>Join a Session!</div>
+    <div className='text-[#795df1] bg-[#2A1B3D] pt-[1rem] text-center font-abc  text-8xl animate-fade-down animate-once animate-duration-1000 animate-delay-1000'>Join a Session!</div>
     <div className='h-[45rem] bg-[#2A1B3D] flex'>
     <div className='w-[55rem] '>
       <div className=' pt-[6rem] text-abc text-4xl text-white text-center px-[3rem] leading-loose'>Step into the spotlight of knowledge-sharing and excitement by joining a quiz session with QuizMate – where curiosity meets camaraderie!</div>

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import  { useContext, useEffect, useState } from 'react'
 import { CustomContext } from '../../context/customQuizContext'
 import {baseUrl} from "../../baseUrl.jsx"
 import { AuthContext } from '../../context/authContext.jsx'
@@ -10,10 +10,10 @@ import { Link } from 'react-router-dom'
 
 const Quiz = () => {
     
-  const {accessToken,userCredential,login,refreshToken}=useContext(AuthContext);
+  const {accessToken,refreshToken}=useContext(AuthContext);
   const {questionInfo,setQuestionInfo,resultList,setResultList,result,setResult,
-    totalQ,chosenCategory,totalMarks}=useContext(CustomContext);
-  const start=0;
+    chosenCategory,totalMarks}=useContext(CustomContext);
+  // const start=0;
   const end=questionInfo.length-1;
   const [current,setCurrent]=useState(0);
   const [rightAns,setRightAns]=useState("");
@@ -72,7 +72,7 @@ const Quiz = () => {
   const getResultHandler =() =>{
     let resultUrl=`${baseUrl}/user/response`;
     
-    console.log(userCredential);
+    // console.log(userCredential);
     
 
     console.log(`Bearer ${accessToken}`);
@@ -91,11 +91,11 @@ const Quiz = () => {
 
     axios.request(config)
         .then((response) => {
-          console.log(response);
+          // console.log(response);
           if (response.status === 200) {
             setResultList(response.data.responseList)
             setResult(response.data.result);
-            console.log("done");
+            // console.log("done");
             navigate("/quizResult");
 
             //Reset all custom context data
@@ -103,7 +103,7 @@ const Quiz = () => {
           }
           else {
             try{
-              console.log(userCredential);
+              // console.log(userCredential);
               refreshToken();
               getResultHandler();
             }catch(error)
@@ -121,14 +121,14 @@ const Quiz = () => {
         
   }
   useEffect(()=>{
-    console.log(response);
+    // console.log(response);
   },[response,rightAns]);
   useEffect(()=>{
-    console.log(resultList);
-    console.log(result);
+    // console.log(resultList);
+    // console.log(result);
   },[resultList,result])
   useEffect(()=>{
-    console.log(accessToken);
+    // console.log(accessToken);
   },[accessToken])
   return (
     <>
@@ -140,7 +140,7 @@ const Quiz = () => {
 
       <div className='options'>
 
-        <div className='option1 option1 text-center text-white text-2xl font-abc pb-0 border border-1 h-[4rem] w-[35rem] mb-[1rem] rounded-lg flex items-center justify-center'>
+        <div className='option1 option1 text-center text-white text-xl font-abc pb-0 border border-1 h-[4.5rem] w-[35rem] mb-[1rem] rounded-lg flex items-center justify-center'>
           <input 
           type="radio"
           onClick={changeHandler}
@@ -151,7 +151,7 @@ const Quiz = () => {
           <label htmlFor="option1">{questionInfo[current].options1}</label>
         </div>
         
-        <div className='option2  text-center text-white text-2xl font-abc pb-0 border border-1 h-[4rem] w-[35rem] mb-[1rem] rounded-lg flex items-center justify-center'>
+        <div className='option2  text-center text-white text-xl font-abc pb-0 border border-1 h-[4.5rem] w-[35rem] mb-[1rem] rounded-lg flex items-center justify-center'>
             <input
             type="radio"
             onClick={changeHandler}
@@ -161,7 +161,7 @@ const Quiz = () => {
             <label htmlFor="option2">{questionInfo[current].options2}</label>
         </div>
 
-        <div className='option3  text-center text-white text-2xl font-abc pb-0 border border-1 h-[4rem] w-[35rem] mb-[1rem] rounded-lg flex items-center justify-center'>
+        <div className='option3  text-center text-white text-xl font-abc pb-0 border border-1 h-[4.5rem] w-[35rem] mb-[1rem] rounded-lg flex items-center justify-center'>
             <input
             type="radio"
             onClick={changeHandler}
@@ -171,7 +171,7 @@ const Quiz = () => {
             <label htmlFor="option3">{questionInfo[current].options3}</label>
         </div>
 
-        <div className='option4  text-center text-white text-2xl font-abc pb-0 border border-1 h-[4rem] w-[35rem] mb-[1rem] rounded-lg flex items-center justify-center'>
+        <div className='option4  text-center text-white text-xl font-abc pb-0 border border-1 h-[4.5rem] w-[35rem] mb-[1rem] rounded-lg flex items-center justify-center'>
             <input
             type="radio"
             onClick={changeHandler}

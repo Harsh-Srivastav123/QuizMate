@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import  { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { AuthContext } from '../../context/authContext';
@@ -12,15 +12,15 @@ import Error from '../../animations/Error.json'
 const Dashboard = () => {
   const { accessToken, uId } = useContext(AuthContext);
   const { dashboardData, setDashboardData } = useContext(SessionContext);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
+  // const [loading, setLoading] = useState(false);
+  // const [error, setError] = useState(null);
 
   useEffect(() => {
     fetchDashboardData();
-  }, []);
+  }, );
 
   const fetchDashboardData = () => {
-    setLoading(true);
+    // setLoading(true);
     axios.get(`${baseUrl}/user/user/${uId}`, {
       headers: {
         'Authorization': `Bearer ${accessToken}`,
@@ -29,22 +29,17 @@ const Dashboard = () => {
     })
     .then((response) => {
       setDashboardData(response.data);
-      console.log(response.data);
-      setLoading(false);
+      // console.log(response.data);
+      // setLoading(false);
     })
     .catch((error) => {
-      setError(error);
-      setLoading(false);
+      // setError(error);
+      // setLoading(false);
+      console.log(error)
     });
   };
 
-  // if (loading) {
-  //   return <div>Loading...</div>;
-  // }
-
-  // if (error) {
-  //   return <div>Error: {error.message}</div>;
-  // }
+  
 
   return (
     <>
@@ -57,7 +52,7 @@ const Dashboard = () => {
               </div>
           
           </div> 
-          <div className='text-white text-5xl font-abc  flex mt-[5rem] justify-center'>Whoops! It seems you're not logged in. Login to see your progress!</div>
+          <div className='text-white text-5xl font-abc  flex mt-[5rem] justify-center'>Whoops! It seems you&apos;re not logged in. Login to see your progress!</div>
           
           <div className='flex mt-[2rem] justify-center'><Link to="/login"> 
               <button className="relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-xl font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800">
@@ -78,7 +73,7 @@ const Dashboard = () => {
       </div >
       <div className='flex'>
       <div className='pl-[0rem] w-[55rem] pt-3' >
-      <div className='text-center font-abc text-gray-300 text-4xl pt-[5rem]'>Hello {dashboardData.userName}, hope you're doing good!</div>
+      <div className='text-center font-abc text-gray-300 text-4xl pt-[5rem]'>Hello {dashboardData.userName}, hope you&apos;re doing good!</div>
       
       <div className='text-center font-abc text-gray-300 text-4xl pt-[2rem]'>Your userID is {dashboardData.id}.</div>
       <div className='text-center font-abc text-gray-300 text-4xl pt-[2rem]'>Email :{dashboardData.email}!!</div>

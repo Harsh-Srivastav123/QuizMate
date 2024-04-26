@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react';
+import  {  useContext, useEffect } from 'react';
 import axios from 'axios';
 import { SessionContext } from '../../context/Sessioncontext';
 import {AuthContext} from '../../context/authContext'
@@ -12,15 +12,16 @@ import Start from '../../animations/Start.json'
 
 const Joinsession = () => {
   const navigate=useNavigate()
-  //const [sessionId, setSessionId] = useState('');
+  
   
   const { accessToken } = useContext( AuthContext);
-  const [start, setStart] = useState(false);
-  const {sessionId,setSessionId,sessionTitle,setSessionTitle,sessionQList,setSessionQList, sessionUserId, setSessionUserId}=useContext(SessionContext);
+  // const [start, setStart] = useState(false);
+  const { setTimeDuration,  setDate, sessionId,setSessionId,sessionTitle,setSessionTitle,sessionQList,setSessionQList, sessionUserId, setSessionUserId}=useContext(SessionContext);
   
   
 
   const joinSession = () => {
+    
     
     const config = {
       method: 'get',
@@ -32,28 +33,32 @@ const Joinsession = () => {
     };
     
     axios.request(config)
-      .then((response) => {
-        if (response.status === 200) {
-          console.log(response.data);
-          const sessionData=response.data;
-          console.log(sessionData);
-          setSessionTitle(sessionData.sessionTitle);
-          setSessionQList(sessionData.sessionQuestionList)
+   
+    .then((response) => {
+      if (response.status==200) {
+        // console.log("Session data:", response.data);
+        const sessionData = response.data;
+        setSessionTitle(sessionData.sessionTitle);
+        setSessionQList(sessionData.sessionQuestionList);
+        setDate(sessionData.dateAndTime);
+        // console.log(date);
+        setTimeDuration(sessionData.duration);
+        // console.log(timeDuration);
+        // setStart(true);
+        navigate("/sessionQuiz");
+      }
+      
+    })
+    .catch((error)=>{
+      console.log(error);
+    })
 
-          setStart(true);
 
-          navigate("/sessionQuiz" , )
-        } else {
-          console.log(JSON.stringify(response.data));
-        }
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+      
   };
   useEffect(()=>{
-    console.log("Title",sessionTitle);
-    console.log("Qlist is",sessionQList);
+    // console.log("Title",sessionTitle);
+    // console.log("Qlist is",sessionQList);
   },[sessionQList,sessionTitle])
 
   const handleSessionIdChange = (e) => {
@@ -75,7 +80,7 @@ const Joinsession = () => {
                   </div>
               
               </div> 
-              <div className='text-white text-5xl font-abc  flex mt-[5rem] justify-center'>Whoops! It seems you're not logged in. Login to join a quiz session!</div>
+              <div className='text-white text-5xl font-abc  flex mt-[5rem] justify-center'>Whoops! It seems you&apos;re not logged in. Login to join a quiz session!</div>
               
               <div className='flex mt-[2rem] justify-center'><Link to="/login"> 
                   <button className="relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-xl font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800">

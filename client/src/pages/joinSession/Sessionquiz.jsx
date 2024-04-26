@@ -7,12 +7,13 @@ import axios from 'axios'
 import Submit from '../../animations/Submit.json'
 import Lottie from "lottie-react"
 import { Link } from "react-router-dom"
+// import Timer from "./Timer"
 
 const Sessionquiz = () => {
   
-  const {userCredential,accessToken}=useContext(AuthContext)
+  const {accessToken}=useContext(AuthContext)
   const {sessionQList,sessionId,result,setResult,setSessionQlist, sessionUserId}=useContext(SessionContext);
-  // const navigate = useNavigate();
+  
   const end=sessionQList.length-1;
   const [current,setCurrent]=useState(0);
   const [rightAns,setRightAns]=useState("");
@@ -64,10 +65,10 @@ const Sessionquiz = () => {
   const getResultHandler =() =>{
     let resultUrl=`${baseUrl}/session/sessionResponse`;
     
-    console.log(userCredential);
+    // console.log(userCredential);
     
 
-    console.log(`Bearer ${accessToken}`);
+    // console.log(`Bearer ${accessToken}`);
     let config = {
       method: 'post',
       maxBodyLength: Infinity,
@@ -83,11 +84,11 @@ const Sessionquiz = () => {
 
     axios.request(config)
         .then((response) => {
-          console.log(response);
+          // console.log(response);
           if (response.status === 200) {
             
             setResult(response.data);
-            console.log("done");
+            // console.log("done");
             //navigate("");
 
             //Reset all custom context data
@@ -95,7 +96,7 @@ const Sessionquiz = () => {
           }
           else {
             try{
-              console.log(userCredential);
+              // console.log(userCredential);
               
               getResultHandler();
             }catch(error)
@@ -113,10 +114,10 @@ const Sessionquiz = () => {
         
   }
   useEffect(()=>{
-    console.log("result is ",result)
+    // console.log("result is ",result)
   },[result])
   useEffect(()=>{
-    console.log(response);
+    // console.log(response);
   },[response,rightAns]);
   
 
@@ -127,6 +128,7 @@ const Sessionquiz = () => {
   
   return (
     <>
+    
       {(current<=end)?
       <div className="bg-[#2A1B3D]  flex-col flex items-center justify-center">
         <div className='question text-3xl text-white font-abc pb-2 flex items-center justify-center border-2  border-purple-600  h-[10rem] w-[50rem] text-center rounded-lg mt-[3rem] mb-[1rem] '>

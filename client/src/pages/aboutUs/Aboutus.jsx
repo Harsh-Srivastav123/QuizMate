@@ -1,6 +1,5 @@
-import React from 'react'
+
 import Pragya from '../../photos/Pragya.jpg'
-import Insta from '../../photos/Insta.png'
 import Linkedin from '../../photos/Linkedin.png'
 import Aastha from '../../photos/Aastha.png'
 import Prashant1 from '../../photos/Prashant1.png'
@@ -15,7 +14,7 @@ const Aboutus = () => {
       <Link to="/"><div className='text-white text-2xl font-abc absolute top-[2rem] right-[4rem] h-16 w-16'>Home</div></Link>
     <div className='bg-[#2A1B3D]   '>
       <div className='text-8xl  bg-[#2A1B3D] mx-[17rem] pt-[7rem] font-abc text-[#795df1]'>Welcome to QuizMate!</div>
-      <div className='text-4xl font-abc text-gray-300 mx-[10rem] pt-[4rem] text-center leading-relaxed'>At Quizmate, we're passionate about learning and having fun while doing it. Our mission is to provide an engaging platform where users can challenge themselves, expand their knowledge, and connect with others through the excitement of quizzes.</div>
+      <div className='text-4xl font-abc text-gray-300 mx-[10rem] pt-[4rem] text-center leading-relaxed'>At Quizmate, we&apos;re passionate about learning and having fun while doing it. Our mission is to provide an engaging platform where users can challenge themselves, expand their knowledge, and connect with others through the excitement of quizzes.</div>
       <div className='mx-[34rem] pt-[7rem] font-abc text-[#795df1] text-8xl'> Our Team</div>
       <div className='flex-col mx-[38rem] '>
     <img className=" mt-10 rounded-full w-80 h-80   object-cover border-black border-2" src={Harsh} alt="image description"/>
@@ -26,9 +25,7 @@ const Aboutus = () => {
         <a href="https://www.linkedin.com/in/harsh-srivastav123/">
         <img className='ml-7 rounded-sm w-5 h-5 object-cover ' src={Linkedin} />
         </a>
-        <a href="https://www.instagram.com/hr_srivastav123/">
-        <img className='ml-3 rounded-sm w-5 h-5 object-cover ' src={Insta}/>
-        </a>
+        
         <a href="https://github.com/Harsh-Srivastav123">
         <img className='ml-2 rounded-sm w-5 h-5 object-cover ' src={github} />
         </a>
@@ -46,9 +43,7 @@ const Aboutus = () => {
         <a href="https://www.linkedin.com/in/pragya-shrivastava-30014b229/">
         <img className='ml-10 rounded-sm w-5 h-5 object-cover ' src={Linkedin} />
         </a>
-        <a href="https://www.instagram.com/pr19gya/">
-        <img className='ml-3 rounded-sm w-5 h-5 object-cover ' src={Insta}/>
-        </a>
+        
         <a href="https://github.com/pr19gya">
         <img className='ml-2 rounded-sm w-5 h-5 object-cover ' src={github} />
         </a>
@@ -66,9 +61,7 @@ const Aboutus = () => {
         <a href="https://www.linkedin.com/in/aastha-kesarwani-bb59b7228/">
         <img className='ml-10 rounded-sm w-5 h-5 object-cover ' src={Linkedin} />
         </a>
-        <a href="https://www.instagram.com/__a.a.s.t.h.a___/">
-        <img className='ml-3 rounded-sm w-5 h-5 object-cover ' src={Insta}/>
-        </a>
+      
         <a href="https://github.com/Aakesarwani">
         <img className='ml-2 rounded-sm w-5 h-5 object-cover ' src={github} />
         </a>
@@ -88,9 +81,7 @@ const Aboutus = () => {
         <a href="https://www.linkedin.com/in/shubhang-shukla-661106216/">
         <img className='ml-10 rounded-sm w-5 h-5 object-cover ' src={Linkedin} />
         </a>
-        <a href="https://www.instagram.com/the_shubhang_01/">
-        <img className='ml-3 rounded-sm w-5 h-5 object-cover ' src={Insta}/>
-        </a>
+        
         <a href="https://github.com/Shubhang001">
         <img className='ml-2 rounded-sm w-5 h-5 object-cover ' src={github} />
         </a>
@@ -108,9 +99,7 @@ const Aboutus = () => {
         <a href="https://www.linkedin.com/in/prashant-singh-269050267/">
         <img className='ml-10 rounded-sm w-5 h-5 object-cover ' src={Linkedin} />
         </a>
-        <a href="https://www.instagram.com/the_red_tshirt_guy/">
-        <img className='ml-3 rounded-sm w-5 h-5 object-cover ' src={Insta}/>
-        </a>
+        
         <a href="https://github.com/prashantSj789">
         <img className='ml-2 rounded-sm w-5 h-5 object-cover ' src={github} />
         </a>
@@ -122,7 +111,7 @@ const Aboutus = () => {
       
     </div>
     <div className='bg-[#2A1B3D] mt-[5rem] font-abc text-7xl text-[#795df1] mx-[10rem] '>Join the Quizmate Community Today</div>
-    <div className='text-4xl mx-[10rem] font-abc text-gray-300 text-center mt-[3rem] leading-normal pb-[7rem]'>Ready to take your knowledge to the next level? Join the Quizmate community today and start quizzing like never before. Whether you're a student, educator, or lifelong learner, there's something for everyone at Quizmate. Let's embark on this journey of discovery together!</div>
+    <div className='text-4xl mx-[10rem] font-abc text-gray-300 text-center mt-[3rem] leading-normal pb-[7rem]'>Ready to take your knowledge to the next level? Join the Quizmate community today and start quizzing like never before. Whether you&apos;re a student, educator, or lifelong learner, there&apos;s something for everyone at Quizmate. Let&apos;s embark on this journey of discovery together!</div>
     </div>
     
   )

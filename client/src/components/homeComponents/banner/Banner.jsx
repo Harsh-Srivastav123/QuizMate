@@ -1,21 +1,7 @@
-import React, { useState } from 'react'
 
-
-import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
-
 const Banner = () => {
-
-   
-  
-
-  
-
-  
-
-    
-    
   return (
     <div className='h-[45rem] bg-[#2A1B3D] '>
       

@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
+import  { useState } from 'react'
 import axios from "axios";
 import FormData from "form-data"
-import fs from "fs"
-import Image from "./../../../public/user.jpeg"
+// import fs from "fs"
+// import Image from "./../../../public/user.jpeg"
 import { useContext } from 'react';
 import { AuthContext } from '../../context/authContext';
 import {baseUrl} from "./../../baseUrl.jsx"
@@ -14,7 +14,7 @@ const Signup = () => {
         email:"",
         password:"",
     });
-    const{message,setMessage}=useContext(AuthContext);
+    const{setMessage}=useContext(AuthContext);
     const [registered,setRegistered]=useState(false);
 
 
@@ -44,13 +44,13 @@ const Signup = () => {
                 data : data
             };
 
-            axios.request
-            (config)
+            axios.request(config)
             .then((response) => {
-                console.log(JSON.stringify(response.data));
+                // console.log(JSON.stringify(response.data));
                 setMessage(JSON.stringify(response.data.message))
-                console.log(message)
+                // console.log(message)
                 setRegistered(true);
+                console.log(registered)
 
             })
             .catch((error) => {

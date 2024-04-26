@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import  { useContext, useEffect, useState } from 'react';
 import { SessionContext } from '../../context/Sessioncontext';
 
 const Sessionlist = () => {
@@ -7,15 +7,15 @@ const Sessionlist = () => {
 
     useEffect(() => {
         if (dashboardData && dashboardData.sessionList && dashboardData.sessionList.length > 0) {
-            // Sort sessions based on date and time
+            
             const sortedData = dashboardData.sessionList.slice().sort((a, b) => {
                 const dateA = new Date(a.dateAndTime).getTime();
                 const dateB = new Date(b.dateAndTime).getTime();
-                return dateB - dateA; // Descending order
+                return dateB - dateA; 
             });
             setSortedSessions(sortedData);
         }
-    }, [dashboardData]); // Re-run effect when dashboardData changes
+    }, [dashboardData]); 
 
     if (!sortedSessions || sortedSessions.length === 0) {
         return <div>No results found.</div>;
@@ -23,6 +23,7 @@ const Sessionlist = () => {
 
     return (
         <div className='bg-[#2A1B3D]'>
+            <div className='pb-10'>
             <div className='text-center text-white text-6xl pt-10 font-abc pb-10'>Session List</div>
             {sortedSessions.map((result, index) => (
                 <>
@@ -45,8 +46,7 @@ const Sessionlist = () => {
                     {result.sessionQuestionList.map((newres, newindex) => (
                         <div key={newindex} className='px-10 py-3 '>
                             <p>Question {newindex+1}:</p>
-                            {/* <p>Question Category : {newres.category}</p> */}
-                            {/* <p>Difficulty: {newres.difficulty}</p> */}
+                            
                             <p>Question ID: {newres.id}</p>
                             <p>Marks: {newres.marks}</p>
                             <p>Question: {newres.question}</p>
@@ -56,13 +56,14 @@ const Sessionlist = () => {
                             <p>Option 4 :{newres.options4}</p>
                             <p>Right Answer: {newres.rightAnswer}</p>
                             <p>Right Option: {newres.rightOption}</p>
-                            {/* <p>Topic: {newres.topic}</p> */}
+                            
                         </div>
                     ))}
                 </div>
-                {/* <div>-------------------------------------------------------------------------</div> */}
+                
                 </>
             ))}
+            </div>
         </div>
     );
 };

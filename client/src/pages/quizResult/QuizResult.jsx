@@ -1,10 +1,10 @@
-import React, { useContext, useEffect } from 'react'
+import  { useContext } from 'react'
 import { CustomContext } from '../../context/customQuizContext'
 
 const QuizResult = () => {
     const {resultList,result}=useContext(CustomContext);
-    console.log(result);
-    console.log(resultList);
+    // console.log(result);
+    // console.log(resultList);
     const incorrectAnswers = resultList.filter(item => !item.result).map(item => (
         <div key={item.id}>
             <p><strong>Question:</strong> {item.question}</p>
@@ -13,10 +13,10 @@ const QuizResult = () => {
         </div>
     ));
   return (
-    <div className='bg-[#2A1B3D] h-screen'>
-      <div>
-        <div className='text-white text-7xl text-center pt-5'>Quiz Result</div>
-        <div className='border border-1 mx-[15rem] my-[2.5rem] rounded-lg leading-relaxed text-xl text-gray-300 p-5'>
+    <div className='bg-[#2A1B3D] relative '>
+      <div className='pb-[7rem]'>
+        <div className='text-white text-7xl text-center pt-5 '>Quiz Result</div>
+        <div className='border border-1 mx-[15rem] my-[2.5rem] rounded-lg leading-relaxed text-xl text-gray-300 p-5 pb-10'>
           <div>
             <p><span>Category : </span> {result.category}</p>
             <p><span>Total Questions : </span>{result.totalquestion}</p>

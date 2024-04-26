@@ -1,10 +1,11 @@
-import React, { useContext, useEffect, useState } from 'react'
+import  { useContext, useEffect, useState } from 'react'
 import { baseUrl } from '../../baseUrl.jsx';
-import axios, { formToJSON } from 'axios';
+import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { CustomContext } from '../../context/customQuizContext.jsx';
 import Lottie from 'lottie-react'
 import Custom from '../../animations/Custom.json'
+import { AuthContext } from '../../context/authContext.jsx';
 
 const CustomQuiz = () => {
 
@@ -15,8 +16,14 @@ const CustomQuiz = () => {
     const [hardQuestion,setHardQuestion]=useState(0);
     const [categoryList,setCategoryList]=useState([]);
     const [qList,setQList]=useState([]);
-    const { questionInfo , setQuestionInfo , totalQ,setTotalQ,chosenCategory,setChosenCategory ,totalMarks,setTotalMarks} = useContext(CustomContext);
+    const { setQuestionInfo , setTotalQ,setChosenCategory ,totalMarks,setTotalMarks} = useContext(CustomContext);
     const navigate = useNavigate();
+
+    const {refreshToken}=useContext(AuthContext);
+    useEffect(()=>{
+        console.log("Refreshing token ")
+        refreshToken();
+    },[]);
 
     function updateQuestionCounts() {
         const selectedCategoryData = categoryList.find(categoryData => categoryData.category === formData.category);
@@ -26,15 +33,16 @@ const CustomQuiz = () => {
             setMediumQuestion(selectedCategoryData.mediumQuestion);
             setHardQuestion(selectedCategoryData.hardQuestion);
         } else {
-            // If the selected category is not found, set all counts to 0
+            
             setEasyQuestion(0);
             setMediumQuestion(0);
             setHardQuestion(0);
         }
-    }
+    } 
     useEffect(()=>{
         updateQuestionCounts();
-    },[formData.category])
+     },)
+    // [formData.category])
        
 
     useEffect(()=>{
@@ -42,7 +50,7 @@ const CustomQuiz = () => {
         const fetchData = async () => {
             try {
               const response = await axios.get(`${baseUrl}/question/category/all`);
-              console.log(response.data);
+            //   console.log(response.data);
               const categoryData = response.data.map(item => item.category);
               setCategories(categoryData);
               setCategoryList(response.data);
@@ -53,10 +61,10 @@ const CustomQuiz = () => {
           };
           fetchData();
           
-    },[]);
+    },);
 
     useEffect(()=>{
-        console.log(formData)
+        // console.log(formData)
         //console.log(categoryList);
     },[formData.category,formData.easy,formData.medium,formData.hard,categoryList]);
 
@@ -91,7 +99,7 @@ const CustomQuiz = () => {
 
     }
     useEffect(()=>{
-        console.log(qList);
+        // console.log(qList);
     },[qList])
 
     function submitHandler(e){
@@ -128,10 +136,10 @@ const CustomQuiz = () => {
           
     }
     useEffect(()=>{
-        console.log(questionInfo);
-        console.log(chosenCategory);
-        console.log(totalQ);
-        console.log(totalMarks);
+        // console.log(questionInfo);
+        // console.log(chosenCategory);
+        // console.log(totalQ);
+        // console.log(totalMarks);
     },[totalMarks])
 
   return (
@@ -139,13 +147,7 @@ const CustomQuiz = () => {
        <div className='text-center text-white text-6xl pt-10 font-abc pb-10'>Customize Your Quiz</div>
        <div className='flex'>
        <div className='border border-1 ml-[7rem] my-[3rem] p-10 rounded-lg  leading-relaxed w-[40rem]'>
-        {/* <label htmlFor="category" className='text-2xl text-gray-300 my-5 '>Category : </label>
-        <select  name="category" id="category" onChange={changeHandler} value={formData.category}>
-            <option value=""></option>
-            {categories.map((category) => (
-                <option key={category} value={category}>{category}</option>
-            ))}
-        </select> */}
+       
 
         
         <form className=" my-0">
@@ -161,22 +163,14 @@ const CustomQuiz = () => {
         <br />
         <div> 
 
-            {/* <label className='text-2xl text-gray-300 my-6 ' htmlFor="easy">Number of Easy Questions : </label>
-            <div>
-                <input name="easy" id='easy' type="number"  onChange={changeHandler} value={formData.easy} />
-                / {easyQuestion}
-            </div> */}
+           
             <div className='mb-5 '>
                             <div className='text-xl text-white mx-0'>Number of Easy Questions :</div>
                             <input  className="my-[0.7rem] w-[35rem] h-10  bg-[#2a1b3d] border  border-white text-gray-900 text-md rounded-lg focus:ring-blue-500 focus:border-blue-500 block  p-2.5  dark:bg-[#2a1b3d] dark:border-white dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" name="easy" id='easy' type="number"  onChange={changeHandler} value={formData.easy}/>/ {easyQuestion}
                             
             </div>
 
-            {/* <label className='text-2xl text-gray-300 my-5 ' htmlFor="medium">Number of Medium Questions : </label>
-            <div>
-                <input name="medium" id='medium' type="number"  onChange={changeHandler} value={formData.medium} />
-                / {mediumQuestion}
-            </div> */}
+           
 
             <div className='mb-5 '>
                             <div className='text-xl text-white mx-0'>Number of Medium Questions :</div>
@@ -184,11 +178,7 @@ const CustomQuiz = () => {
                             
             </div>
 
-            {/* <label className='text-2xl text-gray-300 my-5 ' htmlFor="hard">Number of Hard Questions : </label>
-            <div>
-                <input name="hard" id='hard' type="number"  onChange={changeHandler} value={formData.number} />
-                / {hardQuestion}
-            </div> */}
+          
 
             <div className='mb-5 '>
                             <div className='text-xl text-white mx-0'>Number of Hard Questions :</div>
@@ -208,7 +198,7 @@ const CustomQuiz = () => {
                                 </button>
                                 
                     </div>
-            {/* <button onClick={addHandler}>Add</button> */}
+           
         </div>
         <div>
            {qList.map((que,index) =>(
@@ -232,7 +222,7 @@ const CustomQuiz = () => {
                                 </button>
                                 
                     </div>
-            {/* <button onClick={submitHandler}>Begin Quiz</button> */}
+           
         </div>
       
     </div>

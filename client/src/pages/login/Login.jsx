@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/authContext.jsx";
-import axios from "axios";
+// import axios from "axios";
 
 
 
@@ -72,7 +72,7 @@ const LoginPage=()=>{
             </button>
             
             </div>
-            <Link to="/signup">Don't have an account?   Signup</Link>
+            <Link to="/signup">Don&apos;t have an account?   Signup</Link>
             {err && err}
         </div>  
         </div>       

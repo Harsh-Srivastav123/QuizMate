@@ -1,4 +1,4 @@
-import React from 'react'
+ 
 import { Link } from 'react-router-dom'
 import Lottie from 'lottie-react'
 import Session from '../../../animations/Session.json'
@@ -9,6 +9,9 @@ const Box = () => {
     <>
     <div className='text-[#795df1] bg-[#2A1B3D] px-5 font-abc text-center text-8xl animate-fade-down animate-once animate-duration-1000 animate-delay-1000'>Create and Customize</div>
     <div className='bg-[#2A1B3D] h-[40rem] flex'>
+    <div className='w-[40rem] pl-[7rem] pt-7'>
+        <Lottie animationData={Session}/>
+      </div>
       <div className='w-[70rem] px-[5rem] pt-[4rem]'>
       
       <div className="text-white text-4xl pt-[4rem] text-center font-abc px-[1rem] leading-loose">Personalize your quiz experience, challenge yourself, and expand your knowledge!</div>
@@ -23,9 +26,7 @@ const Box = () => {
           </button></Link>
       </div>
       </div>
-      <div className='w-[40rem] pr-[7rem] pt-7'>
-        <Lottie animationData={Session}/>
-      </div>
+      
     </div>
     </>
   )
