@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 const Addques = (props) => {
     const [questions, setQuestions] = useState([
-        {
+        { 
             question: '',
             options1: '',
             options2: '',

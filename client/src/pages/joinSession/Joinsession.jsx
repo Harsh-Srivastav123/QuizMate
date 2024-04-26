@@ -74,7 +74,7 @@ const Joinsession = () => {
                   <Lottie animationData={Error}/>
                   </div>
               
-              </div>
+              </div> 
               <div className='text-white text-5xl font-abc  flex mt-[5rem] justify-center'>Whoops! It seems you're not logged in. Login to join a quiz session!</div>
               
               <div className='flex mt-[2rem] justify-center'><Link to="/login"> 

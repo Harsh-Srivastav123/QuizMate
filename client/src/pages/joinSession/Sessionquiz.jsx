@@ -1,6 +1,6 @@
 import { useContext,useEffect,useState } from "react"
 import { SessionContext } from "../../context/Sessioncontext"
-import {useNavigate} from 'react-router-dom'
+// import {useNavigate} from 'react-router-dom'
 import { AuthContext } from "../../context/authContext"
 import { baseUrl } from "../../baseUrl"
 import axios from 'axios'
@@ -12,7 +12,7 @@ const Sessionquiz = () => {
   
   const {userCredential,accessToken}=useContext(AuthContext)
   const {sessionQList,sessionId,result,setResult,setSessionQlist, sessionUserId}=useContext(SessionContext);
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const end=sessionQList.length-1;
   const [current,setCurrent]=useState(0);
   const [rightAns,setRightAns]=useState("");
@@ -109,7 +109,7 @@ const Sessionquiz = () => {
         .catch((error) => {
             console.log(error);
         });
-        
+         
         
   }
   useEffect(()=>{
@@ -128,14 +128,14 @@ const Sessionquiz = () => {
   return (
     <>
       {(current<=end)?
-      <div className="bg-[#2A1B3D] h-screen flex-col flex items-center justify-center">
-        <div className='question text-4xl text-white font-abc pb-2 border border-1'>
+      <div className="bg-[#2A1B3D]  flex-col flex items-center justify-center">
+        <div className='question text-3xl text-white font-abc pb-2 flex items-center justify-center border-2  border-purple-600  h-[10rem] w-[50rem] text-center rounded-lg mt-[3rem] mb-[1rem] '>
           {sessionQList[current].question}
         </div>
 
         <div className='options'>
 
-          <div className='option1 text-white text-2xl font-abc pb-4'>
+          <div className='option1 text-center text-white text-2xl font-abc pb-0 border border-1 h-[4rem] w-[35rem] mb-[1rem] rounded-lg flex items-center justify-center'>
             <input 
             type="radio"
             onClick={changeHandler}
@@ -146,7 +146,7 @@ const Sessionquiz = () => {
             <label htmlFor="option1">  {sessionQList[current].options1}</label>
           </div>
         
-          <div className='option2 text-white text-2xl font-abc pb-4'>
+          <div className='option2 text-center text-white text-2xl font-abc pb-0 flex items-center justify-center border border-1 h-[4rem] w-[35rem] mb-[1rem] rounded-lg'>
             <input
             type="radio"
             onClick={changeHandler}
@@ -156,7 +156,7 @@ const Sessionquiz = () => {
             <label htmlFor="option2">  {sessionQList[current].options2}</label>
           </div>
 
-          <div className='option3 text-white text-2xl font-abc pb-4'>
+          <div className='option3 text-center text-white text-2xl font-abc pb-0 flex items-center justify-center border border-1 h-[4rem] w-[35rem] mb-[1rem] rounded-lg'>
             <input
             type="radio"
             onClick={changeHandler}
@@ -166,7 +166,7 @@ const Sessionquiz = () => {
             <label htmlFor="option3">  {sessionQList[current].options3}</label>
           </div>
 
-          <div className='option4 text-white text-2xl font-abc pb-4'>
+          <div className='option4 text-center text-white text-2xl font-abc pb-0 flex items-center justify-center border border-1 h-[4rem] w-[35rem] mb-[1rem] rounded-lg'>
             <input
             type="radio"
             onClick={changeHandler}
@@ -178,9 +178,9 @@ const Sessionquiz = () => {
 
         </div>
         <br />
-        <div className="flex space-x-[35rem]">
+        <div className="flex space-x-[45rem]">
         {(current>0)?<div className='ml-[0rem] flex'>
-                    <div className="py-[1.9rem] pl-[0rem] pb-10">
+                    <div className="py-[0.5rem] pl-[0rem] pb-1">
                                 <button className="relative  inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-xl font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800" onClick={handlePreviousClick}>
                                 <span className="relative px-5 py-2 transition-all ease-in duration-75 bg-white dark:bg-[#2A1B3D] rounded-md group-hover:bg-opacity-0">
                                 Previous
@@ -193,7 +193,7 @@ const Sessionquiz = () => {
                     </div>:""}
           {/* {(current>0)?<button className="" onClick={handlePreviousClick}>Previous</button>:""} */}
           {(current<(end))?<div className='ml-[0rem] flex'>
-                    <div className="py-[1.9rem] pl-[0rem] pb-10">
+                    <div className="py-[0.5rem] pl-[0rem] pb-1">
                                 <button className="relative  inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-xl font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800" onClick={handleNextClick}>
                                 <span className="relative px-5 py-2 transition-all ease-in duration-75 bg-white dark:bg-[#2A1B3D] rounded-md group-hover:bg-opacity-0">
                                 Next

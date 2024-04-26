@@ -16,6 +16,9 @@ import Joinsession from './pages/joinSession/Joinsession.jsx';
 import Aboutus from './pages/aboutUs/Aboutus.jsx';
 import Sessionquiz from './pages/joinSession/Sessionquiz.jsx';
 import Created from './pages/conductSession/Created.jsx';
+import Dashboard from './pages/dashboard/Dashboard.jsx';
+import Resultlist from './pages/dashboard/Resultlist.jsx';
+import Sessionlist from './pages/dashboard/Sessionlist.jsx';
 
 function App() {
  
@@ -38,6 +41,9 @@ function App() {
         <Route path="/aboutUs" element={<Aboutus/>}/>
         <Route path="/sessionQuiz" element={<Sessionquiz/>}/>
         <Route path="/created" element={<Created/>}/>
+        <Route path="/dashboard" element={<Dashboard/>}/>
+        <Route path="/resultlist" element={<Resultlist/>}/>
+        <Route path="/sessionlist" element={<Sessionlist/>}/>
         
       </Routes>
     </div>

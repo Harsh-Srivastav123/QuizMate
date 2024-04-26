@@ -11,6 +11,7 @@ export const AuthContextProvider =({children})=>{
     //to display message
     const [message,setMessage]=useState("");
     const [accessToken,setAccessToken]=useState("");
+    //const [userid, setUserId]= useState(0);
     //const [sessionId,setSessionId]=useState(0);
     let access="";
     
@@ -48,6 +49,9 @@ export const AuthContextProvider =({children})=>{
         try {
             const response = axios.request(config);
             const newToken = response.data.token;
+           // const userId=response.data.userId;
+           // console.log(userid);
+           // setUserId(userid);
             setAccessToken(newToken);
             console.log("New AccessToken is:", newToken);
         } catch (error) {
@@ -100,7 +104,8 @@ export const AuthContextProvider =({children})=>{
         
         console.log(userCredential);
         console.log(accessToken);
-    }, [accessToken,userCredential]);
+        console.log(uId);
+    }, [accessToken,userCredential, uId]);
     
 
     let value = {

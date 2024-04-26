@@ -4,6 +4,9 @@ import {baseUrl} from "../../baseUrl.jsx"
 import { AuthContext } from '../../context/authContext.jsx'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
+import Lottie from 'lottie-react'
+import Submit from '../../animations/Submit.json'
+import { Link } from 'react-router-dom'
 
 const Quiz = () => {
     
@@ -130,14 +133,14 @@ const Quiz = () => {
   return (
     <>
     {(current<=end)?
-    <div>
-      <div className='question'>
+    <div className='bg-[#2A1B3D]  flex-col flex items-center justify-center h-screen  '>
+      <div className='question text-3xl text-white font-abc pb-2 flex items-center justify-center border-2  border-purple-600 h-[10rem] w-[50rem] text-center rounded-lg mt-[3rem] mb-[1rem] '>
         {questionInfo[current].question}
       </div>
 
       <div className='options'>
 
-        <div className='option1'>
+        <div className='option1 option1 text-center text-white text-2xl font-abc pb-0 border border-1 h-[4rem] w-[35rem] mb-[1rem] rounded-lg flex items-center justify-center'>
           <input 
           type="radio"
           onClick={changeHandler}
@@ -148,7 +151,7 @@ const Quiz = () => {
           <label htmlFor="option1">{questionInfo[current].options1}</label>
         </div>
         
-        <div className='option2'>
+        <div className='option2  text-center text-white text-2xl font-abc pb-0 border border-1 h-[4rem] w-[35rem] mb-[1rem] rounded-lg flex items-center justify-center'>
             <input
             type="radio"
             onClick={changeHandler}
@@ -158,7 +161,7 @@ const Quiz = () => {
             <label htmlFor="option2">{questionInfo[current].options2}</label>
         </div>
 
-        <div className='option3'>
+        <div className='option3  text-center text-white text-2xl font-abc pb-0 border border-1 h-[4rem] w-[35rem] mb-[1rem] rounded-lg flex items-center justify-center'>
             <input
             type="radio"
             onClick={changeHandler}
@@ -168,7 +171,7 @@ const Quiz = () => {
             <label htmlFor="option3">{questionInfo[current].options3}</label>
         </div>
 
-        <div className='option4'>
+        <div className='option4  text-center text-white text-2xl font-abc pb-0 border border-1 h-[4rem] w-[35rem] mb-[1rem] rounded-lg flex items-center justify-center'>
             <input
             type="radio"
             onClick={changeHandler}
@@ -180,18 +183,85 @@ const Quiz = () => {
 
       </div>
       <br />
-      <div>
-        {(current>0)?<button onClick={handlePreviousClick}>Previous</button>:""}
-        {(current<(end))?<button onClick={handleNextClick}>Next</button>:""}
+      <div className='flex space-x-[45rem]'>
+        {(current>0)?
+        <div className='ml-[0rem] flex'>
+        <div className="py-[0.5rem] pl-[0rem] pb-1">
+                    <button className="relative  inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-xl font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800" onClick={handlePreviousClick}>
+                    <span className="relative px-5 py-2 transition-all ease-in duration-75 bg-white dark:bg-[#2A1B3D] rounded-md group-hover:bg-opacity-0">
+                    Previous
+                    </span>
+
+                    </button>
+                    
+        </div>
+        
+        </div>:""}
+        {(current<(end))?<div className='ml-[0rem] flex'>
+                    <div className="py-[0.5rem] pl-[0rem] pb-1">
+                                <button className="relative  inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-xl font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800" onClick={handleNextClick}>
+                                <span className="relative px-5 py-2 transition-all ease-in duration-75 bg-white dark:bg-[#2A1B3D] rounded-md group-hover:bg-opacity-0">
+                                Next
+                                </span>
+
+                                </button>
+                                
+                    </div>
+                    
+                    </div>
+        :""}
       </div>
       <br />
-      <div>
+      {/* <div>
         <button onClick={handleSubmitNext}>Submit and Next</button>
         
-      </div>
+      </div> */}
+      <div className='ml-[0rem] flex'>
+                    <div className="">
+                                <button className="relative  inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-xl font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800" onClick={handleSubmitNext}>
+                                <span className="relative px-5 py-2 transition-all ease-in duration-75 bg-white dark:bg-[#2A1B3D] rounded-md group-hover:bg-opacity-0">
+                                Submit and Next
+                                </span>
+
+                                </button>
+                                
+                    </div>
+                    
+                    </div>
     </div>
     :
-    <button onClick={getResultHandler}>Submit the quiz</button>}
+    <div className="bg-[#2A1B3D] h-screen">
+      
+      <div className='h-screen bg-[#2A1B3D]'>
+    <div className='  flex  justify-center'>
+        <div className='h-[30rem] w-[35rem] '>
+        <Lottie animationData={Submit}/>
+        </div>
+    
+    </div>
+    <div className='flex mt-[2rem] justify-center'><Link to="/"> 
+        <button className="relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-xl font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800" onClick={getResultHandler}>
+                <span className="relative px-7 py-3 transition-all ease-in duration-75 bg-white dark:bg-[#2A1B3D] rounded-md group-hover:bg-opacity-0">
+                Submit the Quiz
+                </span>
+        </button></Link> 
+    </div>
+      </div>
+      {/* <div className='ml-[0rem] flex'>
+                    <div className="">
+                                <button className="relative  inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-xl font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800" onClick={getResultHandler}>
+                                <span className="relative px-5 py-2 transition-all ease-in duration-75 bg-white dark:bg-[#2A1B3D] rounded-md group-hover:bg-opacity-0">
+                                Submit the Quiz
+                                </span>
+
+                                </button>
+                                
+                    </div>
+                    
+                    </div> */}
+    {/* <button onClick={getResultHandler}>Submit the quiz</button>  */}
+    </div>}
+    
     </>
   )
 }

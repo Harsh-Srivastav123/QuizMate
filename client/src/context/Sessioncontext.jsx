@@ -7,9 +7,10 @@ export const SessionContextProvider =({children})=>{
     const [sessionQList,setSessionQList]=useState([]);
     const [result,setResult]=useState(null);
     const [sessionUserId, setSessionUserId]=useState('');
+    const [dashboardData, setDashboardData]=useState('');
 
     let value={
-        sessionId,setSessionId,sessionTitle,setSessionTitle,sessionQList,setSessionQList,result,setResult, sessionUserId,setSessionUserId
+        sessionId,setSessionId,sessionTitle,setSessionTitle,sessionQList,setSessionQList,result,setResult,dashboardData,setDashboardData, sessionUserId,setSessionUserId
 
     }
 

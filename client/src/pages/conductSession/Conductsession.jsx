@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from 'react';
+import  { useContext, useState, useEffect } from 'react';
 import axios from 'axios';
 import { AuthContext } from '../../context/authContext';
 import { baseUrl } from '../../baseUrl';
@@ -9,15 +9,17 @@ import Error from '../../animations/Error.json'
 import Waiting from '../../animations/Waiting.json'
 import {useNavigate} from 'react-router-dom'
 import Adduser from './Adduser';
+// import Adduser from './Adduser';
 
 const Conductsession = () => {
     const navigate=useNavigate()
     const { accessToken } = useContext(AuthContext);
-    const [message, setMessage] = useState('');
-    const [delayDuration, setDelayDuration] = useState(0);
+    // const [message, setMessage] = useState('');
+    // const [delayDuration, setDelayDuration] = useState(0);
     const [duration, setDuration] = useState(0);
     const [title, setTitle] = useState('');
     const [questions, setQuestions] = useState([]);
+    const [user, setUser]=useState([]);
     const [sessionCreated, setSessionCreated] = useState(false); 
     const [selectedDate, setSelectedDate] = useState(new Date());
     const [differenceMinutes, setDifferenceMinutes] = useState(0);
@@ -49,11 +51,14 @@ const Conductsession = () => {
         setQuestions(data);
     };
     
+    const getUser = (data) => {
+        setUser(data);
+    };
     const handleCreateSession = async () => {
         try {
-            if (!accessToken) {
-               setMessage("Please Login In to conduct a quiz session ")
-            }
+            // if (!accessToken) {
+            //    setMessage("Please Login In to conduct a quiz session ")
+            // }
            
             const data = {
                 delayDuration: differenceMinutes,
@@ -140,6 +145,7 @@ const Conductsession = () => {
                         <div className='text-xl text-white mx-3' >Add Questions</div>
                         <div>
                     <Addques onSubmit={getQues}/>
+                    {/* <Adduser onSubmit={getUser}/> */}
                     </div>
                     </div>
 
