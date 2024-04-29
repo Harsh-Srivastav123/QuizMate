@@ -10,7 +10,7 @@ defaults:
 
 jobs:
   build:
-    runs-on: ['self-hosted', 'Linux', 'X64']
+    runs-on: ['self-hosted', 'Linux', 'X64', 'gcp2']
 
     
     steps:
@@ -28,3 +28,7 @@ jobs:
 
       - name: Build
         run: npm run build
+
+      - name: Restart Nginx
+        run: sudo systemctl restart nginx
+      
