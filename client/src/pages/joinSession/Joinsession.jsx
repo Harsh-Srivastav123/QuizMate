@@ -50,7 +50,8 @@ const Joinsession = () => {
       
     })
     .catch((error)=>{
-      console.log(error);
+      console.log(error.response.data.message);
+      alert(error.response.data.message + "Time left => " +error.response.data.timeLeft +"minutes");
     })
 
 
