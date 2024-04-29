@@ -29,7 +29,7 @@ const Dashboard = () => {
     })
     .then((response) => {
       setDashboardData(response.data);
-      // console.log(response.data);
+      //  console.log(response.data);
       // setLoading(false);
     })
     .catch((error) => {

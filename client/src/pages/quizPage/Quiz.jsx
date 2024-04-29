@@ -15,6 +15,7 @@ const Quiz = () => {
     chosenCategory,totalMarks}=useContext(CustomContext);
   // const start=0;
   const end=questionInfo.length-1;
+  const [selectedOption, setSelectedOption] = useState(null);
   const [current,setCurrent]=useState(0);
   const [rightAns,setRightAns]=useState("");
   const [response, setResponse] = useState({
@@ -38,12 +39,14 @@ const Quiz = () => {
 
   const handleNextClick = () => {
     setCurrent(current + 1);
-    setRightAns("");
+    // setRightAns("");/
+    setSelectedOption(null);
   };
 
   
   const handlePreviousClick = () => {
     setCurrent(current - 1);
+    setSelectedOption(null);
   };
   
   const handleSubmitNext = () => {
@@ -143,8 +146,22 @@ const Quiz = () => {
       </div>
 
       <div className='options'>
-
-        <div className='option1 option1 text-center text-white text-xl font-abc pb-0 border border-1 h-[4.5rem] w-[35rem] mb-[1rem] rounded-lg flex items-center justify-center'>
+      <label
+                
+                className={`option1 text-center text-white text-xl font-abc pb-0 border border-1 h-[4.5rem] w-[35rem] mb-[1rem] rounded-lg flex items-center justify-center ${
+                  selectedOption === 1 ? 'bg-green-500' : 'bg-[#2A1B3D]  hover:bg-green-800'
+                }`}
+              >
+                 <input
+                  type='radio'
+                  onChange={changeHandler}
+                  name='option'
+                  value={1}
+                  checked={selectedOption === 1} // Check the radio button if it's the selected option
+                  style={{ display: 'none' }} // Hide the actual radio button
+                />
+                {questionInfo[current].options1}
+        {/* <div className='option1 option1 text-center text-white text-xl font-abc pb-0 border border-1 h-[4.5rem] w-[35rem] mb-[1rem] rounded-lg flex items-center justify-center' >
           <input 
           type="radio"
           onClick={changeHandler}
@@ -153,9 +170,62 @@ const Quiz = () => {
           value={1}
           id='option1' />
           <label htmlFor="option1">{questionInfo[current].options1}</label>
-        </div>
+        </div> */}
+        </label>
+
+        <label
+                
+                className={`option2 text-center text-white text-xl font-abc pb-0 border border-1 h-[4.5rem] w-[35rem] mb-[1rem] rounded-lg flex items-center justify-center ${
+                  selectedOption === 2 ? 'bg-green-500' : 'bg-[#2A1B3D] hover:bg-green-800'
+                }`}
+              >
+                 <input
+                  type='radio'
+                  onChange={changeHandler}
+                  name='option'
+                  value={2}
+                  checked={selectedOption === 2} // Check the radio button if it's the selected option
+                  style={{ display: 'none' }} // Hide the actual radio button
+                />
+                {questionInfo[current].options2}
+                </label>
+
+
+                <label
+                
+                className={`option3 text-center text-white text-xl font-abc pb-0 border border-1 h-[4.5rem] w-[35rem] mb-[1rem] rounded-lg flex items-center justify-center ${
+                  selectedOption === 3 ? 'bg-green-500' : 'bg-[#2A1B3D] hover:bg-green-800'
+                }`}
+              >
+                 <input
+                  type='radio'
+                  onChange={changeHandler}
+                  name='option'
+                  value={3}
+                  checked={selectedOption === 3} // Check the radio button if it's the selected option
+                  style={{ display: 'none' }} // Hide the actual radio button
+                />
+                {questionInfo[current].options3}
+                </label>
+
+                <label
+                
+                className={`option4 text-center text-white text-xl font-abc pb-0 border border-1 h-[4.5rem] w-[35rem] mb-[1rem] rounded-lg flex items-center justify-center ${
+                  selectedOption === 4 ? 'bg-green-500' : 'bg-[#2A1B3D] hover:bg-green-800'
+                }`}
+              >
+                 <input
+                  type='radio'
+                  onChange={changeHandler}
+                  name='option'
+                  value={4}
+                  checked={selectedOption === 4} // Check the radio button if it's the selected option
+                  style={{ display: 'none' }} // Hide the actual radio button
+                />
+                {questionInfo[current].options4}
+                </label>
         
-        <div className='option2  text-center text-white text-xl font-abc pb-0 border border-1 h-[4.5rem] w-[35rem] mb-[1rem] rounded-lg flex items-center justify-center'>
+        {/* <div className='option2  text-center text-white text-xl font-abc pb-0 border border-1 h-[4.5rem] w-[35rem] mb-[1rem] rounded-lg flex items-center justify-center'>
             <input
             type="radio"
             onClick={changeHandler}
@@ -163,9 +233,9 @@ const Quiz = () => {
             value={2}
             id="option2"/>
             <label htmlFor="option2">{questionInfo[current].options2}</label>
-        </div>
+        </div> */}
 
-        <div className='option3  text-center text-white text-xl font-abc pb-0 border border-1 h-[4.5rem] w-[35rem] mb-[1rem] rounded-lg flex items-center justify-center'>
+        {/* <div className='option3  text-center text-white text-xl font-abc pb-0 border border-1 h-[4.5rem] w-[35rem] mb-[1rem] rounded-lg flex items-center justify-center'>
             <input
             type="radio"
             onClick={changeHandler}
@@ -173,9 +243,9 @@ const Quiz = () => {
             value={3}
             id="option3"/>
             <label htmlFor="option3">{questionInfo[current].options3}</label>
-        </div>
+        </div> */}
 
-        <div className='option4  text-center text-white text-xl font-abc pb-0 border border-1 h-[4.5rem] w-[35rem] mb-[1rem] rounded-lg flex items-center justify-center'>
+        {/* <div className='option4  text-center text-white text-xl font-abc pb-0 border border-1 h-[4.5rem] w-[35rem] mb-[1rem] rounded-lg flex items-center justify-center'>
             <input
             type="radio"
             onClick={changeHandler}
@@ -183,7 +253,7 @@ const Quiz = () => {
             value={4}
             id="option4"/>
             <label htmlFor="option4">{questionInfo[current].options4}</label>
-        </div>
+        </div> */}
 
       </div>
       <br />

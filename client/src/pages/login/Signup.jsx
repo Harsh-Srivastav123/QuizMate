@@ -7,8 +7,10 @@ import { useContext } from 'react';
 import { AuthContext } from '../../context/authContext';
 import {baseUrl} from "./../../baseUrl.jsx"
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const Signup = () => {
+    const navigate=useNavigate();
     const [inputs,setInputs] = useState({
         userName:"",
         email:"",
@@ -50,7 +52,10 @@ const Signup = () => {
                 setMessage(JSON.stringify(response.data.message))
                 // console.log(message)
                 setRegistered(true);
-                console.log(registered)
+                alert("Verify your email and login!");
+                console.log(registered);
+                navigate("/login");
+
 
             })
             .catch((error) => {

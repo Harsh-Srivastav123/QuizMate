@@ -59,6 +59,21 @@ const Sessionlist = () => {
                             
                         </div>
                     ))}
+                    <p>User Data:</p>
+                    {result.sessionUserList.map((res, idx) => (
+                        <div key={idx} className='px-10 py-3 '>
+                            <p>User {idx+1}:</p>
+                            
+                            {/* <p>Completed: {res.completed}</p> */}
+                            <p>Marks: {res.marks}</p>
+                            <p>Session Rank: {res.sessionRank}</p>
+                            <p>Submission TimeStamp :{res.submissionTimeStamp}</p>
+                            <p>UserID :{res.userId}</p>
+                            <p>User Name :{res.userName}</p>
+                           
+                            
+                        </div>
+                    ))}
                 </div>
                 
                 </>

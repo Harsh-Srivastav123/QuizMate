@@ -13,7 +13,7 @@ const Sessionquiz = () => {
   
   const {accessToken}=useContext(AuthContext)
   const {sessionQList,sessionId,result,setResult,setSessionQlist, sessionUserId}=useContext(SessionContext);
-  
+  const [selectedOption, setSelectedOption] = useState(null);
   const end=sessionQList.length-1;
   const [current,setCurrent]=useState(0);
   const [rightAns,setRightAns]=useState("");
@@ -28,15 +28,17 @@ const Sessionquiz = () => {
     setRightAns(event.target.value);
     //console.log(rightAns);
   }
-
+ 
   const handleNextClick = () => {
     setCurrent(current + 1);
-    setRightAns("");
+    // setRightAns("");
+    setSelectedOption(null);
   };
 
   
   const handlePreviousClick = () => {
     setCurrent(current - 1);
+    setSelectedOption(null);
   };
 
   const handleSubmitNext = () => {
@@ -137,46 +139,73 @@ const Sessionquiz = () => {
 
         <div className='options'>
 
-          <div className='option1 text-center text-white text-2xl font-abc pb-0 border border-1 h-[4rem] w-[35rem] mb-[1rem] rounded-lg flex items-center justify-center'>
-            <input 
-            type="radio"
-            onClick={changeHandler}
-            //onChange={changeHandler}
-            name="option"
-            value={1}
-            id='option1' />
-            <label htmlFor="option1">  {sessionQList[current].options1}</label>
-          </div>
+        <label
+                
+                className={`option1 text-center text-white text-xl font-abc pb-0 border border-1 h-[4.5rem] w-[35rem] mb-[1rem] rounded-lg flex items-center justify-center ${
+                  selectedOption === 1 ? 'bg-green-500' : 'bg-[#2A1B3D] hover:bg-green-800'
+                }`}
+              >
+                 <input
+                  type='radio'
+                  onChange={changeHandler}
+                  name='option'
+                  value={1}
+                  checked={selectedOption === 1} // Check the radio button if it's the selected option
+                  style={{ display: 'none' }} // Hide the actual radio button
+                />
+                 {sessionQList[current].options1}
+                </label>
         
-          <div className='option2 text-center text-white text-2xl font-abc pb-0 flex items-center justify-center border border-1 h-[4rem] w-[35rem] mb-[1rem] rounded-lg'>
-            <input
-            type="radio"
-            onClick={changeHandler}
-            name="option"
-            value={2}
-            id="option2"/>
-            <label htmlFor="option2">  {sessionQList[current].options2}</label>
-          </div>
+                <label
+                
+                className={`option2 text-center text-white text-xl font-abc pb-0 border border-1 h-[4.5rem] w-[35rem] mb-[1rem] rounded-lg flex items-center justify-center ${
+                  selectedOption === 2 ? 'bg-green-500' : 'bg-[#2A1B3D] hover:bg-green-800'
+                }`}
+              >
+                 <input
+                  type='radio'
+                  onChange={changeHandler}
+                  name='option'
+                  value={2}
+                  checked={selectedOption === 2} // Check the radio button if it's the selected option
+                  style={{ display: 'none' }} // Hide the actual radio button
+                />
+                 {sessionQList[current].options2}
+                </label>
 
-          <div className='option3 text-center text-white text-2xl font-abc pb-0 flex items-center justify-center border border-1 h-[4rem] w-[35rem] mb-[1rem] rounded-lg'>
-            <input
-            type="radio"
-            onClick={changeHandler}
-            name="option"
-            value={3}
-            id="option3"/>
-            <label htmlFor="option3">  {sessionQList[current].options3}</label>
-          </div>
+                <label
+                
+                className={`option3 text-center text-white text-xl font-abc pb-0 border border-1 h-[4.5rem] w-[35rem] mb-[1rem] rounded-lg flex items-center justify-center ${
+                  selectedOption === 2 ? 'bg-green-500' : 'bg-[#2A1B3D] hover:bg-green-800'
+                }`}
+              >
+                 <input
+                  type='radio'
+                  onChange={changeHandler}
+                  name='option'
+                  value={3}
+                  checked={selectedOption === 3} // Check the radio button if it's the selected option
+                  style={{ display: 'none' }} // Hide the actual radio button
+                />
+                 {sessionQList[current].options3}
+                </label>
 
-          <div className='option4 text-center text-white text-2xl font-abc pb-0 flex items-center justify-center border border-1 h-[4rem] w-[35rem] mb-[1rem] rounded-lg'>
-            <input
-            type="radio"
-            onClick={changeHandler}
-            name="option"
-            value={4}
-            id="option4"/>
-            <label htmlFor="option4">  {sessionQList[current].options4}</label>
-          </div>
+                <label
+                
+                className={`option4 text-center text-white text-xl font-abc pb-0 border border-1 h-[4.5rem] w-[35rem] mb-[1rem] rounded-lg flex items-center justify-center ${
+                  selectedOption === 4 ? 'bg-green-500' : 'bg-[#2A1B3D] hover:bg-green-800'
+                }`}
+              >
+                 <input
+                  type='radio'
+                  onChange={changeHandler}
+                  name='option'
+                  value={4}
+                  checked={selectedOption === 4} // Check the radio button if it's the selected option
+                  style={{ display: 'none' }} // Hide the actual radio button
+                />
+                 {sessionQList[current].options4}
+                </label>
 
         </div>
         <br />

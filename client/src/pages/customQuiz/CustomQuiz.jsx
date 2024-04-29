@@ -156,7 +156,7 @@ const CustomQuiz = () => {
                   </div>
               
               </div> 
-              <div className='text-white text-5xl font-abc  flex mt-[5rem] justify-center'>Whoops! It seems you&apos;re not logged in. Login to join a quiz session!</div>
+              <div className='text-white text-5xl font-abc  flex mt-[5rem] justify-center'>Whoops! It seems you&apos;re not logged in. Login to cutomize a quiz!</div>
               
               <div className='flex mt-[2rem] justify-center'><Link to="/login"> 
                   <button className="relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-xl font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800">
