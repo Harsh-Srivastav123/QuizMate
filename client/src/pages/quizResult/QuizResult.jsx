@@ -3,8 +3,9 @@ import { CustomContext } from '../../context/customQuizContext'
 
 const QuizResult = () => {
     const {resultList,result}=useContext(CustomContext);
-    // console.log(result);
-    // console.log(resultList);
+    console.log(result);
+    console.log(resultList)
+    // / console.log(resultList);
     const incorrectAnswers = resultList.filter(item => !item.result).map(item => (
         <div key={item.id}>
             <p><strong>Question:</strong> {item.question}</p>

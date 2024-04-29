@@ -4,8 +4,10 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { CustomContext } from '../../context/customQuizContext.jsx';
 import Lottie from 'lottie-react'
-import Custom from '../../animations/Custom.json'
+import Custom from '../../animations/Custom.json' 
+import Error from '../../animations/Error.json'
 import { AuthContext } from '../../context/authContext.jsx';
+import { Link } from 'react-router-dom';
 
 const CustomQuiz = () => {
 
@@ -18,8 +20,9 @@ const CustomQuiz = () => {
     const [qList,setQList]=useState([]);
     const { setQuestionInfo , setTotalQ,setChosenCategory ,totalMarks,setTotalMarks} = useContext(CustomContext);
     const navigate = useNavigate();
+    
 
-    const {refreshToken}=useContext(AuthContext);
+    const {refreshToken, accessToken}=useContext(AuthContext);
     useEffect(()=>{
         console.log("Refreshing token ")
         refreshToken();
@@ -143,6 +146,28 @@ const CustomQuiz = () => {
     },[totalMarks])
 
   return (
+    <>
+    {!accessToken ? 
+      <>
+          <div className='h-screen bg-[#2A1B3D]'>
+              <div className='  flex  justify-center'>
+                  <div className='h-[30rem] w-[30rem] '>
+                  <Lottie animationData={Error}/>
+                  </div>
+              
+              </div> 
+              <div className='text-white text-5xl font-abc  flex mt-[5rem] justify-center'>Whoops! It seems you&apos;re not logged in. Login to join a quiz session!</div>
+              
+              <div className='flex mt-[2rem] justify-center'><Link to="/login"> 
+                  <button className="relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-xl font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800">
+                          <span className="relative px-7 py-3 transition-all ease-in duration-75 bg-white dark:bg-[#2A1B3D] rounded-md group-hover:bg-opacity-0">
+                          Login!
+                          </span>
+                  </button></Link> 
+              </div>
+          </div>
+      </>
+   : (
     <div className=' bg-[#2A1B3D] p-10 '>
        <div className='text-center text-white text-6xl pt-10 font-abc pb-10'>Customize Your Quiz</div>
        <div className='flex'>
@@ -229,6 +254,8 @@ const CustomQuiz = () => {
     <div className='w-[35rem] pl-[12rem] pt-10'><Lottie animationData={Custom}/></div>
     </div>
     </div>
+   )}
+    </>
   )
 }
 

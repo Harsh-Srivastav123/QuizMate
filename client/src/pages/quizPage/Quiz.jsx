@@ -19,18 +19,22 @@ const Quiz = () => {
   const [rightAns,setRightAns]=useState("");
   const [response, setResponse] = useState({
     responseList: [],
-    totalQuestion: `${end + 1}`,
+    totalQuestion: `${questionInfo.length}`,
     category: `${chosenCategory}`,
     maximumMarks:`${totalMarks}`
   });
   const navigate = useNavigate();
+  console.log(questionInfo);
+  
   
   
   function changeHandler(event){
-    
     setRightAns(event.target.value);
-    //console.log(rightAns);
+    console.log(rightAns);
   }
+  useEffect(()=>{
+    console.log(rightAns);
+  },[rightAns])
 
   const handleNextClick = () => {
     setCurrent(current + 1);
@@ -60,7 +64,7 @@ const Quiz = () => {
     }
     
 
-    //console.log(response);
+    console.log(response);
     setRightAns("");
     if(current<end)
     {
@@ -121,11 +125,11 @@ const Quiz = () => {
         
   }
   useEffect(()=>{
-    // console.log(response);
+     console.log(response);
   },[response,rightAns]);
   useEffect(()=>{
-    // console.log(resultList);
-    // console.log(result);
+     console.log(resultList);
+     console.log(result);
   },[resultList,result])
   useEffect(()=>{
     // console.log(accessToken);
