@@ -8,13 +8,16 @@ import { AuthContextProvider } from './context/authContext.jsx'
 import { AuthContext } from './context/authContext.jsx'
 import { CustomContext } from './context/customQuizContext.jsx'
 import { CustomContextProvider } from './context/customQuizContext.jsx'
+import { SessionContextProvider } from './context/Sessioncontext.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   //<React.StrictMode>
     <BrowserRouter>
       <AuthContextProvider>  
         <CustomContextProvider>
-          <App/>
+          <SessionContextProvider>
+            <App/>
+          </SessionContextProvider>
         </CustomContextProvider>
       </AuthContextProvider>
     </BrowserRouter>

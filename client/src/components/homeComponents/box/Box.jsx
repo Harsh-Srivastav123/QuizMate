@@ -1,23 +1,34 @@
-import React from 'react'
+ 
+import { Link } from 'react-router-dom'
+import Lottie from 'lottie-react'
+import Session from '../../../animations/Session.json'
 
 
 const Box = () => {
   return (
-    
-    
-    <div className='bg-[#2A1B3D] h-[40rem]'>
-      <div className='text-[#795df1]  text-center font-ghi  text-8xl animate-fade-down animate-once animate-duration-1000 animate-delay-1000'>Create and Customize</div>
-      <div className="text-white text-3xl pt-[4rem] text-center font-abc px-[23rem] leading-loose">Personalize your quiz experience, challenge yourself, and expand your knowledge!</div>
-      <div className='pl-[41rem] pt-[4rem] '>
-        
-        <a href="#_" class="relative inline-flex items-center justify-center px-6 py-4 text-lg font-medium tracking-tighter text-white bg-[#44318D] rounded-full group">
-          <span class="absolute inset-0 w-full h-full mt-1 ml-1 transition-all duration-300 ease-in-out bg-[#44318D] rounded-full group-hover:mt-0 group-hover:ml-0"></span>
-          <span class="absolute inset-0 w-full h-full bg-white rounded-full "></span>
-          <span class="absolute inset-0 w-full h-full transition-all duration-200 ease-in-out delay-100 bg-[#44318D] rounded-full opacity-0 group-hover:opacity-100 "></span>
-          <span class="relative text-[#44318D] text-2xl transition-colors duration-200 ease-in-out delay-100 group-hover:text-white">Create Your Quiz!</span>
-        </a>      
+    <>
+    <div className='text-[#795df1] bg-[#2A1B3D] px-5 font-abc text-center text-8xl animate-fade-down animate-once animate-duration-1000 animate-delay-1000'>Create and Customize</div>
+    <div className='bg-[#2A1B3D] h-[40rem] flex'>
+    <div className='w-[40rem] pl-[7rem] pt-7'>
+        <Lottie animationData={Session}/>
       </div>
+      <div className='w-[70rem] px-[5rem] pt-[4rem]'>
+      
+      <div className="text-white text-4xl pt-[4rem] text-center font-abc px-[1rem] leading-loose">Personalize your quiz experience, challenge yourself, and expand your knowledge!</div>
+      <div className='pl-[20rem] pt-[4rem] '>
+        
+       
+      <Link to="/customquiz">
+         <button className="relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-xl font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800">
+            <span className="relative px-7 py-3 transition-all ease-in duration-75 bg-white dark:bg-[#2A1B3D] rounded-md group-hover:bg-opacity-0">
+            Create!
+            </span>
+          </button></Link>
+      </div>
+      </div>
+      
     </div>
+    </>
   )
 }
 

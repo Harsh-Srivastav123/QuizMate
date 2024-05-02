@@ -1,10 +1,11 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 
 const Footer = () => {
   return (
     <div className='bg-[#2A1B3D] h-10'>
-    <div className='pl-[80rem] cursor-pointer'>For any queries - Contact Us</div>
+    <Link to ="/aboutUs"><div className='pl-[80rem] cursor-pointer'>For any queries - Contact Us</div></Link>
    </div>
     
   )
