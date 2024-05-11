@@ -1,9 +1,9 @@
 http://34.42.152.47/
 
-Overview
+### Overview
 This project is deployed on Google Cloud virtual machine instances using a CI/CD pipeline managed by GitHub Actions. Nginx is utilized as a reverse proxy to serve the frontend application, which is built using React.
 
-Deployment Process
+### Deployment Process
 
 1. *GitHub Actions CI/CD Pipeline:*
    - The deployment process is triggered by a Git push to the repository.
