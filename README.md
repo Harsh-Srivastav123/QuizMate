@@ -16,7 +16,7 @@ This project is deployed on Google Cloud virtual machine instances using a CI/CD
 
 3. *Deployment to Google Cloud VM Instances:*
    - Once the build is successful, the pipeline deploys the built files to the Google Cloud virtual machine instances.
-   - The built files are typically placed in a dist or build directory, containing the static assets of the frontend application.
+   - The built files are typically placed in a dist directory, containing the static assets of the frontend application.
 
 4. *Nginx Configuration:*
    - Nginx is configured on the Google Cloud VM instances to serve the frontend application.
