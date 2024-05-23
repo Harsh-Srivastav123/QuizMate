@@ -1,4 +1,4 @@
-http://34.42.152.47/
+http://react-deployment-125.s3-website.ap-south-1.amazonaws.com/
 
 ### Overview
 This project is deployed on Google Cloud virtual machine instances using a CI/CD pipeline managed by GitHub Actions. Nginx is utilized as a reverse proxy to serve the frontend application, which is built using React.
