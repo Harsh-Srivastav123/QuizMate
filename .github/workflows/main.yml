@@ -8,9 +8,11 @@
 #   run:
 #     working-directory: ./client    
 
-# jobs:
-#   build:
-#     runs-on: ['self-hosted', 'Linux', 'X64', 'gcp2']
+
+jobs:
+  build:
+    runs-on: ['self-hosted', 'Linux', 'X64', 'gcp2']
+
 
     
 #     steps:
@@ -26,8 +28,6 @@
 #       - name: Install dependencies
 #         run: npm install
 
-#       - name: Build
-#         run: npm run build
 
 
   name: CI/CD
